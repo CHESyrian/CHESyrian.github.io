@@ -3,596 +3,488 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tarek Ghajary | Data Analyst Portfolio</title>
+  <title>Tarek Ghajary | Data Analyst</title>
   <meta name="description" content="Portfolio of Tarek Ghajary — Data Analyst, Economics graduate, IBM Data Science & Data Analyst certified." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #0a0a0a;
-      --surface: #141414;
-      --surface2: #1a1a1a;
-      --text: #f5f5f5;
-      --muted: #a3a3a3;
-      --green: #1a7a3a;
-      --green-bright: #22c55e;
-      --red: #dc2626;
-      --border: #2a2a2a;
-      --accent: #22c55e;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Inter', system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.65;
-      min-height: 100vh;
-    }
-    a { color: var(--green-bright); text-decoration: none; transition: color 0.2s; }
-    a:hover { color: #4ade80; }
-    .container { max-width: 960px; margin: 0 auto; padding: 0 1.25rem; }
-
-    /* Header */
-    header {
-      background: linear-gradient(135deg, #0d3d1f 0%, #0a0a0a 55%, #1a0a0a 100%);
-      border-bottom: 3px solid var(--green);
-      padding: 3.5rem 0 2.5rem;
-      position: relative;
-      overflow: hidden;
-    }
-    header::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--green), var(--red));
-    }
-    .hero {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 2rem;
-      justify-content: center;
-      text-align: center;
-    }
-    @media (min-width: 640px) {
-      .hero { text-align: left; justify-content: flex-start; }
-    }
-    .avatar {
-      width: 140px; height: 140px;
-      border-radius: 50%;
-      border: 4px solid var(--green-bright);
-      object-fit: cover;
-      box-shadow: 0 0 0 4px rgba(34,197,94,0.2);
-    }
-    h1 {
-      font-size: clamp(1.9rem, 5vw, 2.6rem);
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      line-height: 1.15;
-    }
-    .role {
-      display: inline-block;
-      margin-top: 0.4rem;
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--green-bright);
-      border-bottom: 2px solid var(--green);
-      padding-bottom: 2px;
-    }
-    .meta-row {
-      margin-top: 0.85rem;
-      color: var(--muted);
-      font-size: 0.95rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem 1.25rem;
-      justify-content: center;
-    }
-    @media (min-width: 640px) { .meta-row { justify-content: flex-start; } }
-    .meta-row span { display: inline-flex; align-items: center; gap: 0.35rem; }
-
-    nav {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 2rem;
-      padding-top: 1.25rem;
-      border-top: 1px solid rgba(255,255,255,0.08);
-    }
-    nav a {
-      color: var(--text);
-      font-weight: 500;
-      font-size: 0.9rem;
-      padding: 0.4rem 0.95rem;
-      border-radius: 999px;
-      border: 1px solid transparent;
-    }
-    nav a:hover {
-      border-color: var(--border);
-      background: var(--surface);
-      color: var(--green-bright);
-    }
-
-    section {
-      padding: 2.75rem 0;
-      border-bottom: 1px solid var(--border);
-    }
-    section:last-of-type { border-bottom: none; }
-    h2 {
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin-bottom: 1.25rem;
-      color: var(--green-bright);
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
-      font-size: 0.95rem;
-    }
-    p { color: var(--muted); margin-bottom: 0.9rem; }
-
-    /* Cards */
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.15rem 1.35rem;
-      margin-bottom: 0.85rem;
-      transition: border-color 0.2s;
-    }
-    .card:hover { border-color: #3a3a3a; }
-    .card h3 {
-      font-size: 1.05rem;
-      font-weight: 600;
-      margin-bottom: 0.25rem;
-    }
-    .card h3 a { color: var(--text); }
-    .card h3 a:hover { color: var(--green-bright); }
-    .card .meta {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-bottom: 0.45rem;
-    }
-    .card p { margin-bottom: 0; font-size: 0.92rem; }
-
-    /* Skills tags */
-    .skills-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-    .skill {
-      background: #0d3d1f;
-      color: #bbf7d0;
-      border: 1px solid #166534;
-      font-size: 0.8rem;
-      font-weight: 500;
-      padding: 0.35rem 0.75rem;
-      border-radius: 999px;
-    }
-
-    /* Projects grid */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 0.75rem;
-    }
-    @media (min-width: 640px) {
-      .projects-grid { grid-template-columns: 1fr 1fr; }
-    }
-    .lang {
-      display: inline-block;
-      font-size: 0.72rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      color: var(--green-bright);
-      background: rgba(34,197,94,0.12);
-      padding: 0.15rem 0.5rem;
-      border-radius: 4px;
-      margin-right: 0.35rem;
-    }
-
-    /* Contact */
-    .contact-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-    .contact-list a { color: var(--text); }
-    .contact-list a:hover { color: var(--green-bright); }
-    .links {
-      display: flex;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-      margin-top: 1.25rem;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      background: var(--green);
-      color: #fff;
-      font-weight: 600;
-      font-size: 0.9rem;
-      padding: 0.55rem 1.1rem;
-      border-radius: 8px;
-      transition: background 0.2s;
-    }
-    .btn:hover { background: #15803d; color: #fff; }
-    .btn.outline {
-      background: transparent;
-      color: var(--green-bright);
-      border: 1px solid var(--green);
-    }
-    .btn.outline:hover { background: rgba(34,197,94,0.12); color: var(--green-bright); }
-
-    footer {
-      text-align: center;
-      padding: 2rem 0 2.5rem;
-      color: var(--muted);
-      font-size: 0.85rem;
-      border-top: 1px solid var(--border);
-    }
-
-    .edu-item, .cert-item {
-      margin-bottom: 1rem;
-    }
-    .edu-item strong, .cert-item strong {
-      color: var(--text);
-      display: block;
-      margin-bottom: 0.2rem;
-    }
-    .cert-item ul {
-      margin: 0.35rem 0 0 1.1rem;
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-  </style>
+  <meta name="theme-color" content="#0b0f14" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <header>
-    <div class="container">
-      <div class="hero">
-        <img class="avatar" src="https://avatars.githubusercontent.com/u/45104417?v=4" alt="Tarek Ghajary" width="140" height="140" />
-        <div>
-          <h1>Tarek Ghajary</h1>
-          <p class="role">Data Analyst</p>
-          <div class="meta-row">
-            <span>📍 Tartous – Drekish, Syria</span>
-            <span>🎂 05 January 1995</span>
-            <span>🎖️ Military service: Free</span>
-          </div>
-        </div>
-      </div>
-      <nav>
+  <!-- Top navigation -->
+  <nav class="topnav" aria-label="Primary">
+    <div class="container topnav-inner">
+      <a href="#" class="logo">Tarek<span>.</span>Ghajary</a>
+      <div class="nav-links">
         <a href="#about">About</a>
         <a href="#education">Education</a>
         <a href="#certificates">Certificates</a>
         <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
-      </nav>
+      </div>
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div class="container mobile-menu" role="navigation" aria-label="Mobile">
+      <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#certificates">Certificates</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="container hero-grid">
+      <div class="avatar-wrap">
+        <img class="avatar" src="https://avatars.githubusercontent.com/u/45104417?v=4" alt="Tarek Ghajary" width="148" height="148" />
+        <span class="avatar-status" title="Available"></span>
+      </div>
+      <div class="hero-content">
+        <span class="eyebrow">Open to opportunities</span>
+        <h1>Tarek Ghajary</h1>
+        <p class="hero-role">Data Analyst · Economics · Data Science</p>
+        <div class="hero-meta">
+          <span>📍 Tartous – Drekish, Syria</span>
+          <span>🎂 05 Jan 1995</span>
+          <span>✓ Military service: Free</span>
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#projects">View projects</a>
+          <a class="btn btn-ghost" href="#contact">Get in touch</a>
+          <a class="btn btn-ghost" href="https://github.com/CHESyrian" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
     </div>
   </header>
 
-  <main class="container">
+  <main>
+    <!-- About -->
     <section id="about">
-      <h2>About Me</h2>
-      <p>
-        Bachelor's degree holder in Economics with a specialization in Financial and Banking Sciences,
-        with expertise in data analysis, statistical methods, and database management.
-        Skilled in collecting, organizing, cleaning, and analyzing data to produce reliable statistical
-        indicators and analytical reports that support evidence-based decision-making and institutional planning.
-      </p>
-      <p>
-        Proficient in Python, SQL, and data analysis tools, with strong analytical thinking, attention to detail,
-        and a commitment to accuracy, integrity, and continuous improvement. Seeking to contribute analytical and
-        statistical expertise to enhance organizational performance and support data-driven public sector decision-making.
-      </p>
+      <div class="container">
+        <div class="section-header reveal">
+          <h2>About me</h2>
+          <p>Background and focus</p>
+        </div>
+        <div class="about-text reveal">
+          <p>
+            Bachelor's degree holder in Economics with a specialization in Financial and Banking Sciences,
+            with expertise in data analysis, statistical methods, and database management.
+            Skilled in collecting, organizing, cleaning, and analyzing data to produce reliable statistical
+            indicators and analytical reports that support evidence-based decision-making and institutional planning.
+          </p>
+          <p>
+            Proficient in Python, SQL, and data analysis tools, with strong analytical thinking, attention to detail,
+            and a commitment to accuracy, integrity, and continuous improvement. Seeking to contribute analytical and
+            statistical expertise to enhance organizational performance and support data-driven public sector decision-making.
+          </p>
+        </div>
+      </div>
     </section>
 
+    <!-- Education -->
     <section id="education">
-      <h2>Education</h2>
-      <div class="card edu-item">
-        <strong>University of Tartous — Faculty of Economy</strong>
-        <p class="meta">Banking and Finance · Bachelor · 2012 – 2020</p>
+      <div class="container">
+        <div class="section-header reveal">
+          <h2>Education</h2>
+          <p>Academic background</p>
+        </div>
+        <div class="stack reveal">
+          <div class="card">
+            <p class="card-title">University of Tartous — Faculty of Economy</p>
+            <p class="card-meta"><span class="badge">Bachelor</span> Banking and Finance · 2012 – 2020</p>
+          </div>
+        </div>
       </div>
     </section>
 
+    <!-- Certificates -->
     <section id="certificates">
-      <h2>Certificates</h2>
-      <div class="card cert-item">
-        <strong>2025 — IBM Data Science Professional Certificate</strong>
-        <p class="meta">Coursera · 10 courses · Capstone project</p>
-        <ul>
-          <li>Data Science methodologies and tools</li>
-          <li>Python programming language</li>
-          <li>SQL with MySQL and DB2 Databases</li>
-          <li>IBM Watson Studio AI · Machine Learning models</li>
-        </ul>
-      </div>
-      <div class="card cert-item">
-        <strong>2025 — IBM Data Analyst Professional Certificate</strong>
-        <p class="meta">Coursera · 9 courses</p>
-        <ul>
-          <li>Excel, SQL, relational databases, Python, Jupyter Notebooks</li>
-          <li>IBM Cognos Analytics · dashboards & reports</li>
-          <li>Data visualization, storytelling, and real-world analysis</li>
-        </ul>
-      </div>
-      <div class="card cert-item">
-        <strong>2020 — Python and Statistics for Financial Analysis</strong>
-        <ul>
-          <li>Technical Analysis of Markets</li>
-          <li>Statistics and Probability</li>
-          <li>Python for Finance</li>
-        </ul>
-      </div>
-      <div class="card cert-item">
-        <strong>2020 — Responsive Website Basics Code</strong>
-        <ul>
-          <li>HTML, CSS and JavaScript</li>
-          <li>jQuery and Bootstrap · UI/UX Design</li>
-        </ul>
+      <div class="container">
+        <div class="section-header reveal">
+          <h2>Certificates</h2>
+          <p>Professional credentials</p>
+        </div>
+        <div class="stack">
+          <div class="card reveal">
+            <p class="card-title">IBM Data Science Professional Certificate</p>
+            <p class="card-meta"><span class="badge badge-green">2025</span> Coursera · 10 courses · Capstone</p>
+            <ul class="cert-list">
+              <li>Data Science methodologies and tools</li>
+              <li>Python programming language</li>
+              <li>SQL with MySQL and DB2 Databases</li>
+              <li>IBM Watson Studio AI · Machine Learning models</li>
+            </ul>
+          </div>
+          <div class="card reveal">
+            <p class="card-title">IBM Data Analyst Professional Certificate</p>
+            <p class="card-meta"><span class="badge badge-green">2025</span> Coursera · 9 courses</p>
+            <ul class="cert-list">
+              <li>Excel, SQL, relational databases, Python, Jupyter Notebooks</li>
+              <li>IBM Cognos Analytics · dashboards & reports</li>
+              <li>Data visualization, storytelling, and real-world analysis</li>
+            </ul>
+          </div>
+          <div class="card reveal">
+            <p class="card-title">Python and Statistics for Financial Analysis</p>
+            <p class="card-meta"><span class="badge">2020</span></p>
+            <ul class="cert-list">
+              <li>Technical Analysis of Markets</li>
+              <li>Statistics and Probability</li>
+              <li>Python for Finance</li>
+            </ul>
+          </div>
+          <div class="card reveal">
+            <p class="card-title">Responsive Website Basics Code</p>
+            <p class="card-meta"><span class="badge">2020</span></p>
+            <ul class="cert-list">
+              <li>HTML, CSS and JavaScript</li>
+              <li>jQuery and Bootstrap · UI/UX Design</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
 
+    <!-- Skills -->
     <section id="skills">
-      <h2>Skills</h2>
-      <div class="skills-grid">
-        <span class="skill">Data Science</span>
-        <span class="skill">Data Analysis</span>
-        <span class="skill">Python</span>
-        <span class="skill">SQL</span>
-        <span class="skill">Excel</span>
-        <span class="skill">Pandas</span>
-        <span class="skill">NumPy</span>
-        <span class="skill">Matplotlib</span>
-        <span class="skill">Seaborn</span>
-        <span class="skill">Plotly</span>
-        <span class="skill">Bokeh</span>
-        <span class="skill">Statistics</span>
-        <span class="skill">Probability</span>
-        <span class="skill">Data Visualization</span>
-        <span class="skill">Dashboards</span>
-        <span class="skill">Data Storytelling</span>
-        <span class="skill">IBM Cognos Analytics</span>
-        <span class="skill">Financial Analysis</span>
-        <span class="skill">Gen AI Tools</span>
-        <span class="skill">Web Scraping</span>
-        <span class="skill">OpenCV</span>
-        <span class="skill">Django</span>
-        <span class="skill">Flask</span>
-        <span class="skill">Full-Stack Web</span>
-        <span class="skill">HTML / CSS / JS</span>
-        <span class="skill">Linux</span>
-        <span class="skill">GitHub</span>
-        <span class="skill">Colab</span>
-        <span class="skill">Kaggle</span>
-        <span class="skill">MS Office</span>
-        <span class="skill">Command Line</span>
-        <span class="skill">Presentation</span>
+      <div class="container">
+        <div class="section-header reveal">
+          <h2>Skills</h2>
+          <p>Tools and technologies</p>
+        </div>
+        <div class="skills-grid reveal">
+          <span class="skill">Data Science</span>
+          <span class="skill">Data Analysis</span>
+          <span class="skill">Python</span>
+          <span class="skill">SQL</span>
+          <span class="skill">Excel</span>
+          <span class="skill">Pandas</span>
+          <span class="skill">NumPy</span>
+          <span class="skill">Matplotlib</span>
+          <span class="skill">Seaborn</span>
+          <span class="skill">Plotly</span>
+          <span class="skill">Bokeh</span>
+          <span class="skill">Statistics</span>
+          <span class="skill">Probability</span>
+          <span class="skill">Data Visualization</span>
+          <span class="skill">Dashboards</span>
+          <span class="skill">Data Storytelling</span>
+          <span class="skill">IBM Cognos Analytics</span>
+          <span class="skill">Financial Analysis</span>
+          <span class="skill">Gen AI Tools</span>
+          <span class="skill">Web Scraping</span>
+          <span class="skill">OpenCV</span>
+          <span class="skill">Django</span>
+          <span class="skill">Flask</span>
+          <span class="skill">Full-Stack Web</span>
+          <span class="skill">HTML / CSS / JS</span>
+          <span class="skill">Linux</span>
+          <span class="skill">GitHub</span>
+          <span class="skill">Colab</span>
+          <span class="skill">Kaggle</span>
+          <span class="skill">MS Office</span>
+          <span class="skill">Command Line</span>
+          <span class="skill">Presentation</span>
+        </div>
       </div>
     </section>
 
+    <!-- Projects -->
     <section id="projects">
-      <h2>Projects (GitHub)</h2>
-      <p style="margin-bottom:1.25rem">All public repositories from <a href="https://github.com/CHESyrian" target="_blank" rel="noopener">github.com/CHESyrian</a></p>
-      <div class="projects-grid">
-
-        <div class="card">
-          <h3><a href="https://github.com/CHESyrian/Superstore_Sales_Analytics" target="_blank" rel="noopener">Superstore Sales Analytics</a></h3>
-          <p class="meta"><span class="lang">Jupyter</span> Data Analytics · GenAI</p>
-          <p>Sales analytics project using generative AI, pandas, matplotlib, seaborn, scikit-learn.</p>
+      <div class="container">
+        <div class="section-header reveal">
+          <h2>Projects</h2>
+          <p>Public repositories on <a href="https://github.com/CHESyrian" target="_blank" rel="noopener">GitHub</a></p>
         </div>
 
-        <div class="card">
-          <h3><a href="https://github.com/CHESyrian/BankAnalytics_ByGenAI" target="_blank" rel="noopener">Bank Analytics by GenAI</a></h3>
-          <p class="meta"><span class="lang">Jupyter</span> Banking · Finance</p>
-          <p>Banking and finance data analysis with generative AI tools.</p>
+        <div class="filter-bar reveal">
+          <button type="button" class="filter-btn active" data-filter="all">All</button>
+          <button type="button" class="filter-btn" data-filter="analytics">Analytics</button>
+          <button type="button" class="filter-btn" data-filter="ml">ML / DS</button>
+          <button type="button" class="filter-btn" data-filter="web">Web</button>
+          <button type="button" class="filter-btn" data-filter="tools">Tools</button>
         </div>
 
-        <div class="card">
-          <h3><a href="https://github.com/CHESyrian/ECommerceDataAnalysis_ByDeepSeek" target="_blank" rel="noopener">E-Commerce Data Analysis</a></h3>
-          <p class="meta"><span class="lang">Jupyter</span> DeepSeek · Analytics</p>
-          <p>E-commerce dataset analysis powered by DeepSeek / GenAI.</p>
-        </div>
+        <div class="projects-grid">
 
-        <div class="card">
-          <h3><a href="https://github.com/CHESyrian/California_Houses_Analytics" target="_blank" rel="noopener">California Houses Analytics</a></h3>
-          <p class="meta"><span class="lang">Analytics</span> GenAI</p>
-          <p>Housing data analytics project using generative AI.</p>
-        </div>
+          <article class="card project-card reveal" data-category="analytics ml">
+            <p class="card-title"><a href="https://github.com/CHESyrian/Superstore_Sales_Analytics" target="_blank" rel="noopener">Superstore Sales Analytics</a></p>
+            <p class="card-meta"><span class="badge">Jupyter</span> GenAI · Analytics</p>
+            <p class="card-desc">Sales analytics with generative AI, pandas, matplotlib, seaborn, scikit-learn.</p>
+            <a class="project-link" href="https://github.com/CHESyrian/Superstore_Sales_Analytics" target="_blank" rel="noopener">View repo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+          </article>
 
-        <div class="card">
-          <h3><a href="https://github.com/CHESyrian/Loan_Status_Classification" target="_blank" rel="noopener">Loan Status Classification</a></h3>
-          <p class="meta"><span class="lang">Jupyter</span> ML · Classification</p>
-          <p>Data science project classifying loan status with pandas, scikit-learn, Bokeh.</p>
-        </div>
+          <article class="card project-card reveal" data-category="analytics">
+            <p class="card-title"><a href="https://github.com/CHESyrian/BankAnalytics_ByGenAI" target="_blank" rel="noopener">Bank Analytics by GenAI</a></p>
+            <p class="card-meta"><span class="badge">Jupyter</span> Banking · Finance</p>
+            <p class="card-desc">Banking and finance data analysis with generative AI tools.</p>
+            <a class="project-link" href="https://github.com/CHESyrian/BankAnalytics_ByGenAI" target="_blank" rel="noopener">View repo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+          </article>
 
-        <div class="card">
-          <h3><a href="https://github.com/CHESyrian/Houses_Prices_Prediction" target="_blank" rel="noopener">House Prices Prediction</a></h3>
-          <p class="meta"><span class="lang">Jupyter</span> ML · Regression</p>
-          <p>Predicting house prices with classical ML and visualization.</p>
-        </div>
+          <article class="card project-card reveal" data-category="analytics">
+            <p class="card-title"><a href="https://github.com/CHESyrian/ECommerceDataAnalysis_ByDeepSeek" target="_blank" rel="noopener">E-Commerce Data Analysis</a></p>
+            <p class="card-meta"><span class="badge">Jupyter</span> DeepSeek</p>
+            <p class="card-desc">E-commerce dataset analysis powered by DeepSeek / GenAI.</p>
+            <a class="project-link" href="https://github.com/CHESyrian/ECommerceDataAnalysis_ByDeepSeek" target="_blank" rel="noopener">View repo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+          </article>
 
-        <div class="card">
-          <h3><a href="https://github.com/CHESyrian/Forecasting_Future_Sales" target="_blank" rel="noopener">Forecasting Future Sales</a></h3>
-          <p class="meta"><span class="lang">Jupyter</span> Time series</p>
-          <p>Sales forecasting with scikit-learn, matplotlib, Bokeh.</p>
-        </div>
+          <article class="card project-card reveal" data-category="analytics">
+            <p class="card-title"><a href="https://github.com/CHESyrian/California_Houses_Analytics" target="_blank" rel="noopener">California Houses Analytics</a></p>
+            <p class="card-meta"><span class="badge">Analytics</span> GenAI</p>
+            <p class="card-desc">Housing data analytics project using generative AI.</p>
+            <a class="project-link" href="https://github.com/CHESyrian/California_Houses_Analytics" target="_blank" rel="noopener">View repo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+          </article>
 
-        <div class="card">
-          <h3><a href="https://github.com/CHESyrian/Analytics_of_The_Titanic_Disaster" target="_blank" rel="noopener">Titanic Disaster Analytics</a></h3>
-          <p class="meta"><span class="lang">Jupyter</span> Classic dataset</p>
-          <p>Exploratory analysis and modeling on the Titanic dataset.</p>
-        </div>
+          <article class="card project-card reveal" data-category="ml">
+            <p class="card-title"><a href="https://github.com/CHESyrian/Loan_Status_Classification" target="_blank" rel="noopener">Loan Status Classification</a></p>
+            <p class="card-meta"><span class="badge">Jupyter</span> ML · Classification</p>
+            <p class="card-desc">Classifying loan status with pandas, scikit-learn, and Bokeh.</p>
+            <a class="project-link" href="https://github.com/CHESyrian/Loan_Status_Classification" target="_blank" rel="noopener">View repo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+          </article>
 
-        <div class="card">
-          <h3><a href="https://github.com/CHESyrian/WW2Operations" target="_blank" rel="noopener">WW2 Operations</a></h3>
-          <p class="meta"><span class="lang">Analytics</span></p>
-          <p>Data analytics project on WWII operations data.</p>
-        </div>
+          <article class="card project-card reveal" data-category="ml">
+            <p class="card-title"><a href="https://github.com/CHESyrian/Houses_Prices_Prediction" target="_blank" rel="noopener">House Prices Prediction</a></p>
+            <p class="card-meta"><span class="badge">Jupyter</span> ML · Regression</p>
+            <p class="card-desc">Predicting house prices with classical ML and visualization.</p>
+            <a class="project-link" href="https://github.com/CHESyrian/Houses_Prices_Prediction" target="_blank" rel="noopener">View repo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+          </article>
 
-        <div class="card">
-          <h3><a href="https://github.com/CHESyrian/Market_Analysis" target="_blank" rel="noopener">Market Analysis</a></h3>
-          <p class="meta"><span class="lang">Jupyter</span> Stocks · Forex</p>
-          <p>Market analysis covering stocks and forex.</p>
-        </div>
+          <article class="card project-card reveal" data-category="ml analytics">
+            <p class="card-title"><a href="https://github.com/CHESyrian/Forecasting_Future_Sales" target="_blank" rel="noopener">Forecasting Future Sales</a></p>
+            <p class="card-meta"><span class="badge">Jupyter</span> Time series</p>
+            <p class="card-desc">Sales forecasting with scikit-learn, matplotlib, and Bokeh.</p>
+            <a class="project-link" href="https://github.com/CHESyrian/Forecasting_Future_Sales" target="_blank" rel="noopener">View repo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+          </article>
 
-        <div class="card">
-          <h3><a href="https://github.com/CHESyrian/IBM_DataScience_Capstone" target="_blank" rel="noopener">IBM Data Science Capstone</a></h3>
-          <p class="meta"><span class="lang">Jupyter</span> Capstone</p>
-          <p>Capstone project from the IBM Data Science Professional Certificate.</p>
-        </div>
+          <article class="card project-card reveal" data-category="ml analytics">
+            <p class="card-title"><a href="https://github.com/CHESyrian/Analytics_of_The_Titanic_Disaster" target="_blank" rel="noopener">Titanic Disaster Analytics</a></p>
+            <p class="card-meta"><span class="badge">Jupyter</span> Classic dataset</p>
+            <p class="card-desc">Exploratory analysis and modeling on the Titanic dataset.</p>
+            <a class="project-link" href="https://github.com/CHESyrian/Analytics_of_The_Titanic_Disaster" target="_blank" rel="noopener">View repo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+          </article>
 
-        <div class="card">
-          <h3><a href="https://github.com/CHESyrian/Coursera_GuidedProjects" target="_blank" rel="noopener">Coursera Guided Projects</a></h3>
-          <p class="meta"><span class="lang">Jupyter</span></p>
-          <p>Collection of Coursera guided projects.</p>
-        </div>
+          <article class="card project-card reveal" data-category="analytics">
+            <p class="card-title"><a href="https://github.com/CHESyrian/WW2Operations" target="_blank" rel="noopener">WW2 Operations</a></p>
+            <p class="card-meta"><span class="badge">Analytics</span></p>
+            <p class="card-desc">Data analytics project on WWII operations data.</p>
+            <a class="project-link" href="https://github.com/CHESyrian/WW2Operations" target="_blank" rel="noopener">View repo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+          </article>
 
-        <div class="card">
-          <h3><a href="https://github.com/CHESyrian/DataScienceExamples" target="_blank" rel="noopener">Data Science Examples</a></h3>
-          <p class="meta"><span class="lang">Jupyter</span> Python</p>
-          <p>Examples of data science workflows with Python.</p>
-        </div>
+          <article class="card project-card reveal" data-category="analytics">
+            <p class="card-title"><a href="https://github.com/CHESyrian/Market_Analysis" target="_blank" rel="noopener">Market Analysis</a></p>
+            <p class="card-meta"><span class="badge">Jupyter</span> Stocks · Forex</p>
+            <p class="card-desc">Market analysis covering stocks and forex.</p>
+            <a class="project-link" href="https://github.com/CHESyrian/Market_Analysis" target="_blank" rel="noopener">View repo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+          </article>
 
-        <div class="card">
-          <h3><a href="https://github.com/CHESyrian/DataScienceLibraries" target="_blank" rel="noopener">Data Science Libraries</a></h3>
-          <p class="meta"><span class="lang">Jupyter</span></p>
-          <p>Examples for core data science packages (pandas, numpy, plotly, bokeh…).</p>
-        </div>
+          <article class="card project-card reveal" data-category="ml">
+            <p class="card-title"><a href="https://github.com/CHESyrian/IBM_DataScience_Capstone" target="_blank" rel="noopener">IBM Data Science Capstone</a></p>
+            <p class="card-meta"><span class="badge">Jupyter</span> Capstone</p>
+            <p class="card-desc">Capstone project from the IBM Data Science Professional Certificate.</p>
+            <a class="project-link" href="https://github.com/CHESyrian/IBM_DataScience_Capstone" target="_blank" rel="noopener">View repo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+          </article>
 
-        <div class="card">
-          <h3><a href="https://github.com/CHESyrian/Bokeh_Examples" target="_blank" rel="noopener">Bokeh Examples</a></h3>
-          <p class="meta"><span class="lang">Jupyter</span> Visualization</p>
-          <p>Interactive visualization examples with Bokeh.</p>
-        </div>
+          <article class="card project-card reveal" data-category="ml">
+            <p class="card-title"><a href="https://github.com/CHESyrian/Coursera_GuidedProjects" target="_blank" rel="noopener">Coursera Guided Projects</a></p>
+            <p class="card-meta"><span class="badge">Jupyter</span></p>
+            <p class="card-desc">Collection of Coursera guided projects.</p>
+            <a class="project-link" href="https://github.com/CHESyrian/Coursera_GuidedProjects" target="_blank" rel="noopener">View repo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+          </article>
 
-        <div class="card">
-          <h3><a href="https://github.com/CHESyrian/CHEMDReader" target="_blank" rel="noopener">CHEMDReader</a></h3>
-          <p class="meta"><span class="lang">Python</span> Flask</p>
-          <p>Python / Flask application (markdown reader).</p>
-        </div>
+          <article class="card project-card reveal" data-category="ml">
+            <p class="card-title"><a href="https://github.com/CHESyrian/DataScienceExamples" target="_blank" rel="noopener">Data Science Examples</a></p>
+            <p class="card-meta"><span class="badge">Jupyter</span> Python</p>
+            <p class="card-desc">Examples of data science workflows with Python.</p>
+            <a class="project-link" href="https://github.com/CHESyrian/DataScienceExamples" target="_blank" rel="noopener">View repo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+          </article>
 
-        <div class="card">
-          <h3><a href="https://github.com/CHESyrian/CyberSecuritySeries" target="_blank" rel="noopener">Cyber Security Series</a></h3>
-          <p class="meta"><span class="lang">Python</span></p>
-          <p>Series of cybersecurity-related Python work.</p>
-        </div>
+          <article class="card project-card reveal" data-category="ml">
+            <p class="card-title"><a href="https://github.com/CHESyrian/DataScienceLibraries" target="_blank" rel="noopener">Data Science Libraries</a></p>
+            <p class="card-meta"><span class="badge">Jupyter</span></p>
+            <p class="card-desc">Examples for core packages: pandas, numpy, plotly, bokeh.</p>
+            <a class="project-link" href="https://github.com/CHESyrian/DataScienceLibraries" target="_blank" rel="noopener">View repo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+          </article>
 
-        <div class="card">
-          <h3><a href="https://github.com/CHESyrian/SalesManager" target="_blank" rel="noopener">Sales Manager</a></h3>
-          <p class="meta"><span class="lang">Python</span> PyQt5 · MySQL</p>
-          <p>Desktop sales management app with PyQt5 and MySQL.</p>
-        </div>
+          <article class="card project-card reveal" data-category="ml">
+            <p class="card-title"><a href="https://github.com/CHESyrian/Bokeh_Examples" target="_blank" rel="noopener">Bokeh Examples</a></p>
+            <p class="card-meta"><span class="badge">Jupyter</span> Visualization</p>
+            <p class="card-desc">Interactive visualization examples with Bokeh.</p>
+            <a class="project-link" href="https://github.com/CHESyrian/Bokeh_Examples" target="_blank" rel="noopener">View repo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+          </article>
 
-        <div class="card">
-          <h3><a href="https://github.com/CHESyrian/CLBP_Web" target="_blank" rel="noopener">CLBP Web</a></h3>
-          <p class="meta"><span class="lang">JavaScript</span> Django</p>
-          <p>Django web application (HTML5, CSS3, AJAX, JS).</p>
-        </div>
+          <article class="card project-card reveal" data-category="web">
+            <p class="card-title"><a href="https://github.com/CHESyrian/CHEMDReader" target="_blank" rel="noopener">CHEMDReader</a></p>
+            <p class="card-meta"><span class="badge">Python</span> Flask</p>
+            <p class="card-desc">Python / Flask application for markdown reading.</p>
+            <a class="project-link" href="https://github.com/CHESyrian/CHEMDReader" target="_blank" rel="noopener">View repo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+          </article>
 
-        <div class="card">
-          <h3><a href="https://github.com/CHESyrian/Estebyan" target="_blank" rel="noopener">Estebyan</a></h3>
-          <p class="meta"><span class="lang">Python</span> Django</p>
-          <p>Django web app with AJAX, jQuery, HTML5, CSS3.</p>
-        </div>
+          <article class="card project-card reveal" data-category="tools">
+            <p class="card-title"><a href="https://github.com/CHESyrian/CyberSecuritySeries" target="_blank" rel="noopener">Cyber Security Series</a></p>
+            <p class="card-meta"><span class="badge">Python</span></p>
+            <p class="card-desc">Series of cybersecurity-related Python work.</p>
+            <a class="project-link" href="https://github.com/CHESyrian/CyberSecuritySeries" target="_blank" rel="noopener">View repo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+          </article>
 
-        <div class="card">
-          <h3><a href="https://github.com/CHESyrian/Syrians" target="_blank" rel="noopener">Syrians</a></h3>
-          <p class="meta"><span class="lang">CSS</span> Django</p>
-          <p>Website built with Python / Django.</p>
-        </div>
+          <article class="card project-card reveal" data-category="tools">
+            <p class="card-title"><a href="https://github.com/CHESyrian/SalesManager" target="_blank" rel="noopener">Sales Manager</a></p>
+            <p class="card-meta"><span class="badge">Python</span> PyQt5 · MySQL</p>
+            <p class="card-desc">Desktop sales management app with PyQt5 and MySQL.</p>
+            <a class="project-link" href="https://github.com/CHESyrian/SalesManager" target="_blank" rel="noopener">View repo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+          </article>
 
-        <div class="card">
-          <h3><a href="https://github.com/CHESyrian/CHE_Functions" target="_blank" rel="noopener">CHE Functions</a></h3>
-          <p class="meta"><span class="lang">Python</span></p>
-          <p>Reusable helper functions for other repositories.</p>
-        </div>
+          <article class="card project-card reveal" data-category="web">
+            <p class="card-title"><a href="https://github.com/CHESyrian/CLBP_Web" target="_blank" rel="noopener">CLBP Web</a></p>
+            <p class="card-meta"><span class="badge">JavaScript</span> Django</p>
+            <p class="card-desc">Django web application with HTML5, CSS3, AJAX, and JS.</p>
+            <a class="project-link" href="https://github.com/CHESyrian/CLBP_Web" target="_blank" rel="noopener">View repo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+          </article>
 
-        <div class="card">
-          <h3><a href="https://github.com/CHESyrian/CHE_Resize_Images" target="_blank" rel="noopener">CHE Resize Images</a></h3>
-          <p class="meta"><span class="lang">Python</span></p>
-          <p>Image resizing utility application.</p>
-        </div>
+          <article class="card project-card reveal" data-category="web">
+            <p class="card-title"><a href="https://github.com/CHESyrian/Estebyan" target="_blank" rel="noopener">Estebyan</a></p>
+            <p class="card-meta"><span class="badge">Python</span> Django</p>
+            <p class="card-desc">Django web app with AJAX, jQuery, HTML5, CSS3.</p>
+            <a class="project-link" href="https://github.com/CHESyrian/Estebyan" target="_blank" rel="noopener">View repo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+          </article>
 
-        <div class="card">
-          <h3><a href="https://github.com/CHESyrian/CHE_Rename_Files" target="_blank" rel="noopener">CHE Rename Files</a></h3>
-          <p class="meta"><span class="lang">Python</span> PyQt5</p>
-          <p>GUI tool (PyQt5) to rename files across folders.</p>
-        </div>
+          <article class="card project-card reveal" data-category="web">
+            <p class="card-title"><a href="https://github.com/CHESyrian/Syrians" target="_blank" rel="noopener">Syrians</a></p>
+            <p class="card-meta"><span class="badge">CSS</span> Django</p>
+            <p class="card-desc">Website built with Python / Django.</p>
+            <a class="project-link" href="https://github.com/CHESyrian/Syrians" target="_blank" rel="noopener">View repo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+          </article>
 
-        <div class="card">
-          <h3><a href="https://github.com/CHESyrian/CHEEditor" target="_blank" rel="noopener">CHE Editor</a></h3>
-          <p class="meta"><span class="lang">Python</span> Tkinter</p>
-          <p>Simple text editor built with Python and Tkinter.</p>
-        </div>
+          <article class="card project-card reveal" data-category="tools">
+            <p class="card-title"><a href="https://github.com/CHESyrian/CHE_Functions" target="_blank" rel="noopener">CHE Functions</a></p>
+            <p class="card-meta"><span class="badge">Python</span></p>
+            <p class="card-desc">Reusable helper functions for other repositories.</p>
+            <a class="project-link" href="https://github.com/CHESyrian/CHE_Functions" target="_blank" rel="noopener">View repo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+          </article>
 
-        <div class="card">
-          <h3><a href="https://github.com/CHESyrian/Benifits" target="_blank" rel="noopener">Benefits Calculator</a></h3>
-          <p class="meta"><span class="lang">Python</span></p>
-          <p>App to calculate benefits.</p>
-        </div>
+          <article class="card project-card reveal" data-category="tools">
+            <p class="card-title"><a href="https://github.com/CHESyrian/CHE_Resize_Images" target="_blank" rel="noopener">CHE Resize Images</a></p>
+            <p class="card-meta"><span class="badge">Python</span></p>
+            <p class="card-desc">Image resizing utility application.</p>
+            <a class="project-link" href="https://github.com/CHESyrian/CHE_Resize_Images" target="_blank" rel="noopener">View repo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+          </article>
 
-        <div class="card">
-          <h3><a href="https://github.com/CHESyrian/LogisticsShippingRates" target="_blank" rel="noopener">Logistics Shipping Rates</a></h3>
-          <p class="meta"><span class="lang">Python</span></p>
-          <p>Shipping rates utility / calculations.</p>
-        </div>
+          <article class="card project-card reveal" data-category="tools">
+            <p class="card-title"><a href="https://github.com/CHESyrian/CHE_Rename_Files" target="_blank" rel="noopener">CHE Rename Files</a></p>
+            <p class="card-meta"><span class="badge">Python</span> PyQt5</p>
+            <p class="card-desc">GUI tool to rename files across folders.</p>
+            <a class="project-link" href="https://github.com/CHESyrian/CHE_Rename_Files" target="_blank" rel="noopener">View repo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+          </article>
 
-        <div class="card">
-          <h3><a href="https://github.com/CHESyrian/Google_Fonts" target="_blank" rel="noopener">Google Fonts (offline)</a></h3>
-          <p class="meta"><span class="lang">CSS</span> Frontend</p>
-          <p>15 fonts packaged for offline use in frontend and Django projects.</p>
-        </div>
+          <article class="card project-card reveal" data-category="tools">
+            <p class="card-title"><a href="https://github.com/CHESyrian/CHEEditor" target="_blank" rel="noopener">CHE Editor</a></p>
+            <p class="card-meta"><span class="badge">Python</span> Tkinter</p>
+            <p class="card-desc">Simple text editor built with Python and Tkinter.</p>
+            <a class="project-link" href="https://github.com/CHESyrian/CHEEditor" target="_blank" rel="noopener">View repo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+          </article>
 
-        <div class="card">
-          <h3><a href="https://github.com/CHESyrian/github-final-project" target="_blank" rel="noopener">GitHub Final Project</a></h3>
-          <p class="meta"><span class="lang">Shell</span> IBM course</p>
-          <p>Final project from the IBM Git and GitHub course.</p>
-        </div>
+          <article class="card project-card reveal" data-category="tools">
+            <p class="card-title"><a href="https://github.com/CHESyrian/Benifits" target="_blank" rel="noopener">Benefits Calculator</a></p>
+            <p class="card-meta"><span class="badge">Python</span></p>
+            <p class="card-desc">App to calculate benefits.</p>
+            <a class="project-link" href="https://github.com/CHESyrian/Benifits" target="_blank" rel="noopener">View repo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+          </article>
 
-        <div class="card">
-          <h3><a href="https://github.com/CHESyrian/CHEChannel" target="_blank" rel="noopener">CHE Channel</a></h3>
-          <p class="meta"><span class="lang">Python</span></p>
-          <p>Python project (CHE Channel).</p>
-        </div>
+          <article class="card project-card reveal" data-category="tools">
+            <p class="card-title"><a href="https://github.com/CHESyrian/LogisticsShippingRates" target="_blank" rel="noopener">Logistics Shipping Rates</a></p>
+            <p class="card-meta"><span class="badge">Python</span></p>
+            <p class="card-desc">Shipping rates utility and calculations.</p>
+            <a class="project-link" href="https://github.com/CHESyrian/LogisticsShippingRates" target="_blank" rel="noopener">View repo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+          </article>
 
-        <div class="card">
-          <h3><a href="https://github.com/CHESyrian/CHESyrian.github.io" target="_blank" rel="noopener">This Portfolio Site</a></h3>
-          <p class="meta"><span class="lang">HTML</span> GitHub Pages</p>
-          <p>Personal portfolio website (this site).</p>
-        </div>
+          <article class="card project-card reveal" data-category="web tools">
+            <p class="card-title"><a href="https://github.com/CHESyrian/Google_Fonts" target="_blank" rel="noopener">Google Fonts (offline)</a></p>
+            <p class="card-meta"><span class="badge">CSS</span> Frontend</p>
+            <p class="card-desc">15 fonts packaged for offline use in frontend and Django projects.</p>
+            <a class="project-link" href="https://github.com/CHESyrian/Google_Fonts" target="_blank" rel="noopener">View repo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+          </article>
 
+          <article class="card project-card reveal" data-category="tools">
+            <p class="card-title"><a href="https://github.com/CHESyrian/github-final-project" target="_blank" rel="noopener">GitHub Final Project</a></p>
+            <p class="card-meta"><span class="badge">Shell</span> IBM course</p>
+            <p class="card-desc">Final project from the IBM Git and GitHub course.</p>
+            <a class="project-link" href="https://github.com/CHESyrian/github-final-project" target="_blank" rel="noopener">View repo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+          </article>
+
+          <article class="card project-card reveal" data-category="tools">
+            <p class="card-title"><a href="https://github.com/CHESyrian/CHEChannel" target="_blank" rel="noopener">CHE Channel</a></p>
+            <p class="card-meta"><span class="badge">Python</span></p>
+            <p class="card-desc">Python project (CHE Channel).</p>
+            <a class="project-link" href="https://github.com/CHESyrian/CHEChannel" target="_blank" rel="noopener">View repo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+          </article>
+
+          <article class="card project-card reveal" data-category="web">
+            <p class="card-title"><a href="https://github.com/CHESyrian/CHESyrian.github.io" target="_blank" rel="noopener">This Portfolio Site</a></p>
+            <p class="card-meta"><span class="badge">HTML</span> GitHub Pages</p>
+            <p class="card-desc">Personal portfolio website (this site).</p>
+            <a class="project-link" href="https://github.com/CHESyrian/CHESyrian.github.io" target="_blank" rel="noopener">View repo <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></a>
+          </article>
+
+        </div>
       </div>
     </section>
 
+    <!-- Contact -->
     <section id="contact">
-      <h2>Contact</h2>
-      <div class="contact-list">
-        <div>📧 <a href="mailto:tarek940gh@gmail.com">tarek940gh@gmail.com</a></div>
-        <div>📱 <a href="tel:+963935968818">+963 935 96 88 18</a></div>
-        <div>📍 Tartous – Drekish, Syria</div>
-      </div>
-      <div class="links">
-        <a class="btn" href="https://github.com/CHESyrian" target="_blank" rel="noopener">GitHub</a>
-        <a class="btn outline" href="https://www.kaggle.com/tarekghajary" target="_blank" rel="noopener">Kaggle</a>
-        <a class="btn outline" href="https://twitter.com/Tarekgh15" target="_blank" rel="noopener">X / Twitter</a>
-        <a class="btn outline" href="mailto:tarek940gh@gmail.com">Email</a>
+      <div class="container">
+        <div class="section-header reveal">
+          <h2>Contact</h2>
+          <p>Let’s connect</p>
+        </div>
+        <div class="contact-grid reveal">
+          <div class="contact-list">
+            <div class="contact-item">
+              <span class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </span>
+              <a href="mailto:tarek940gh@gmail.com">tarek940gh@gmail.com</a>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </span>
+              <a href="tel:+963935968818">+963 935 96 88 18</a>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </span>
+              <span>Tartous – Drekish, Syria</span>
+            </div>
+          </div>
+          <div class="social-links">
+            <a class="btn btn-primary" href="https://github.com/CHESyrian" target="_blank" rel="noopener">GitHub</a>
+            <a class="btn btn-ghost" href="https://www.kaggle.com/tarekghajary" target="_blank" rel="noopener">Kaggle</a>
+            <a class="btn btn-ghost" href="https://twitter.com/Tarekgh15" target="_blank" rel="noopener">X / Twitter</a>
+            <a class="btn btn-ghost" href="mailto:tarek940gh@gmail.com">Email</a>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
   <footer>
     <div class="container">
-      <p>© 2026 Tarek Ghajary · Data Analyst · Hosted on GitHub Pages</p>
+      <p>© 2026 Tarek Ghajary · Data Analyst · Built with HTML, CSS & JS · GitHub Pages</p>
     </div>
   </footer>
+
+  <button type="button" class="back-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
+  <script src="js/main.js"></script>
 </body>
 </html>
