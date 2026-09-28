@@ -1,6 +1,6 @@
 /**
  * Tarek Ghajary — Portfolio
- * Tabs + project filters
+ * Tabs + project accordion
  */
 
 (function () {
@@ -21,7 +21,6 @@
       panel.classList.toggle('active', panel.id === 'panel-' + id);
     });
 
-    // Update URL hash without jump
     if (history.replaceState) {
       history.replaceState(null, '', '#' + id);
     }
@@ -33,27 +32,24 @@
     });
   });
 
-  // Open tab from hash on load
   const hash = (location.hash || '#about').slice(1);
   const valid = Array.from(tabBtns).some((b) => b.dataset.tab === hash);
   activateTab(valid ? hash : 'about');
 
-  // ---------- Project filters ----------
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const projectCards = document.querySelectorAll('.project-card');
+  // ---------- Accordion ----------
+  document.querySelectorAll('.accordion-header').forEach((header) => {
+    header.addEventListener('click', () => {
+      const item = header.closest('.accordion-item');
+      if (!item) return;
 
-  filterBtns.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const filter = btn.dataset.filter;
+      const isOpen = item.classList.contains('open');
+      // Optional: close others (single-open). Comment out to allow multi-open.
+      // item.parentElement.querySelectorAll('.accordion-item.open').forEach((el) => {
+      //   if (el !== item) el.classList.remove('open');
+      // });
 
-      filterBtns.forEach((b) => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      projectCards.forEach((card) => {
-        const category = card.dataset.category || '';
-        const show = filter === 'all' || category.includes(filter);
-        card.classList.toggle('hidden', !show);
-      });
+      item.classList.toggle('open', !isOpen);
+      header.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
     });
   });
 })();
