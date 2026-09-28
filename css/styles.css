@@ -1,6 +1,6 @@
 /* ============================================
    Tarek Ghajary — Portfolio
-   Cover hero + tabbed layout
+   Cover hero + tabbed layout + project accordion
    ============================================ */
 
 :root {
@@ -482,38 +482,110 @@ ul {
   background: var(--accent-soft);
 }
 
-/* ---------- Projects ---------- */
-.filter-bar {
+/* ---------- Accordion (Projects) ---------- */
+.accordion {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  margin-bottom: 1.25rem;
+  flex-direction: column;
+  gap: 0.65rem;
 }
 
-.filter-btn {
-  font-family: inherit;
-  font-size: 0.78rem;
-  font-weight: 500;
-  padding: 0.35rem 0.8rem;
-  border-radius: 999px;
+.accordion-item {
+  background: var(--surface);
   border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color var(--transition);
+}
+
+.accordion-item.open {
+  border-color: #334155;
+}
+
+.accordion-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.2rem;
   background: transparent;
-  color: var(--text-secondary);
-  cursor: pointer;
-  transition: all var(--transition);
-}
-
-.filter-btn:hover {
-  border-color: #3a4a60;
+  border: none;
   color: var(--text);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: background var(--transition);
 }
 
-.filter-btn.active {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #fff;
+.accordion-header:hover {
+  background: var(--surface-hover);
 }
 
+.accordion-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-width: 0;
+}
+
+.accordion-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-soft);
+  color: var(--accent-hover);
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+  font-size: 0.95rem;
+}
+
+.accordion-title {
+  letter-spacing: -0.01em;
+}
+
+.accordion-count {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+.accordion-chevron {
+  width: 20px;
+  height: 20px;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.accordion-item.open .accordion-chevron {
+  transform: rotate(180deg);
+  color: var(--accent-hover);
+}
+
+.accordion-body {
+  display: none;
+  padding: 0 1rem 1rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.accordion-item.open .accordion-body {
+  display: block;
+}
+
+.accordion-body .projects-grid {
+  margin-top: 0.85rem;
+}
+
+/* ---------- Projects grid ---------- */
 .projects-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -534,10 +606,6 @@ ul {
 
 .project-card .card-desc {
   flex: 1;
-}
-
-.project-card.hidden {
-  display: none;
 }
 
 .project-link {
