@@ -1,52 +1,42 @@
 /**
  * Tarek Ghajary — Portfolio
- * Mobile nav, project filters, scroll reveal, back-to-top
+ * Tabs + project filters
  */
 
 (function () {
   'use strict';
 
-  // ---------- Mobile menu ----------
-  const toggle = document.querySelector('.menu-toggle');
-  const mobileMenu = document.querySelector('.mobile-menu');
+  // ---------- Tabs ----------
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const panels = document.querySelectorAll('.tab-panel');
 
-  if (toggle && mobileMenu) {
-    toggle.addEventListener('click', () => {
-      const open = mobileMenu.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  function activateTab(id) {
+    tabBtns.forEach((btn) => {
+      const active = btn.dataset.tab === id;
+      btn.classList.toggle('active', active);
+      btn.setAttribute('aria-selected', active ? 'true' : 'false');
     });
 
-    mobileMenu.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
-      });
+    panels.forEach((panel) => {
+      panel.classList.toggle('active', panel.id === 'panel-' + id);
     });
+
+    // Update URL hash without jump
+    if (history.replaceState) {
+      history.replaceState(null, '', '#' + id);
+    }
   }
 
-  // ---------- Active nav link on scroll ----------
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-links a, .mobile-menu a');
-
-  function updateActiveNav() {
-    const scrollY = window.scrollY + 100;
-    let current = '';
-
-    sections.forEach((section) => {
-      const top = section.offsetTop;
-      const height = section.offsetHeight;
-      if (scrollY >= top && scrollY < top + height) {
-        current = section.getAttribute('id');
-      }
+  tabBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      activateTab(btn.dataset.tab);
     });
+  });
 
-    navLinks.forEach((link) => {
-      link.classList.toggle('active', link.getAttribute('href') === '#' + current);
-    });
-  }
-
-  window.addEventListener('scroll', updateActiveNav, { passive: true });
-  updateActiveNav();
+  // Open tab from hash on load
+  const hash = (location.hash || '#about').slice(1);
+  const valid = Array.from(tabBtns).some((b) => b.dataset.tab === hash);
+  activateTab(valid ? hash : 'about');
 
   // ---------- Project filters ----------
   const filterBtns = document.querySelectorAll('.filter-btn');
@@ -66,42 +56,4 @@
       });
     });
   });
-
-  // ---------- Scroll reveal ----------
-  const revealEls = document.querySelectorAll('.reveal');
-
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
-    );
-
-    revealEls.forEach((el) => observer.observe(el));
-  } else {
-    revealEls.forEach((el) => el.classList.add('visible'));
-  }
-
-  // ---------- Back to top ----------
-  const backTop = document.querySelector('.back-top');
-
-  if (backTop) {
-    window.addEventListener(
-      'scroll',
-      () => {
-        backTop.classList.toggle('visible', window.scrollY > 400);
-      },
-      { passive: true }
-    );
-
-    backTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
 })();
