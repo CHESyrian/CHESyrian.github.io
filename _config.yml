@@ -1,5 +1,5 @@
-# Jekyll configuration for GitHub Pages
-# Custom index.html (no front matter) is served as-is
+# Static site only — no Jekyll theme
+# (avoids theme layout overriding custom index.html)
 
 title: Tarek Ghajary
 description: Data Analyst · Economics · Data Science portfolio
@@ -8,29 +8,10 @@ email: tarek940gh@gmail.com
 url: "https://chesyrian.github.io"
 baseurl: ""
 
-theme: minima
+# No theme — custom HTML/CSS/JS portfolio
+theme: null
 
-# Keep custom static site files out of theme processing where needed
 exclude:
   - README.md
   - Gemfile
   - Gemfile.lock
-  - node_modules
-  - vendor
-
-# Site metadata
-lang: en
-
-# Minima theme options
-minima:
-  social_links:
-    - title: GitHub
-      icon: github
-      url: "https://github.com/CHESyrian"
-    - title: Kaggle
-      icon: kaggle
-      url: "https://www.kaggle.com/tarekghajary"
-
-plugins:
-  - jekyll-seo-tag
-  - jekyll-sitemap
