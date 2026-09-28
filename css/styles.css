@@ -441,6 +441,28 @@ ul {
   margin-bottom: 0.2rem;
 }
 
+/* Certificate images */
+.cert-img-link {
+  display: block;
+  margin: 0.75rem 0 0.5rem;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.cert-img-link:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-soft);
+}
+
+.cert-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: #fff;
+}
+
 .badge {
   display: inline-block;
   font-size: 0.68rem;
