@@ -3,147 +3,596 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tarek Ghajary | Portfolio</title>
+  <title>Tarek Ghajary | Data Analyst Portfolio</title>
+  <meta name="description" content="Portfolio of Tarek Ghajary — Data Analyst, Economics graduate, IBM Data Science & Data Analyst certified." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0f172a;
-      --surface: #1e293b;
-      --text: #f1f5f9;
-      --muted: #94a3b8;
-      --accent: #38bdf8;
-      --accent-hover: #0ea5e9;
-      --border: #334155;
+      --bg: #0a0a0a;
+      --surface: #141414;
+      --surface2: #1a1a1a;
+      --text: #f5f5f5;
+      --muted: #a3a3a3;
+      --green: #1a7a3a;
+      --green-bright: #22c55e;
+      --red: #dc2626;
+      --border: #2a2a2a;
+      --accent: #22c55e;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Inter', system-ui, sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.65;
       min-height: 100vh;
     }
-    a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
-    a:hover { color: var(--accent-hover); }
-    .container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+    a { color: var(--green-bright); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: #4ade80; }
+    .container { max-width: 960px; margin: 0 auto; padding: 0 1.25rem; }
+
+    /* Header */
     header {
+      background: linear-gradient(135deg, #0d3d1f 0%, #0a0a0a 55%, #1a0a0a 100%);
+      border-bottom: 3px solid var(--green);
+      padding: 3.5rem 0 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--green), var(--red));
+    }
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+      justify-content: center;
       text-align: center;
-      padding: 4rem 0 3rem;
-      border-bottom: 1px solid var(--border);
+    }
+    @media (min-width: 640px) {
+      .hero { text-align: left; justify-content: flex-start; }
     }
     .avatar {
-      width: 120px; height: 120px;
+      width: 140px; height: 140px;
       border-radius: 50%;
-      border: 3px solid var(--accent);
-      margin-bottom: 1.25rem;
+      border: 4px solid var(--green-bright);
       object-fit: cover;
+      box-shadow: 0 0 0 4px rgba(34,197,94,0.2);
     }
-    h1 { font-size: 2.25rem; font-weight: 700; letter-spacing: -0.02em; }
-    .tagline { color: var(--muted); font-size: 1.1rem; margin-top: 0.5rem; }
-    .location { color: var(--muted); font-size: 0.95rem; margin-top: 0.35rem; }
+    h1 {
+      font-size: clamp(1.9rem, 5vw, 2.6rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+    }
+    .role {
+      display: inline-block;
+      margin-top: 0.4rem;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--green-bright);
+      border-bottom: 2px solid var(--green);
+      padding-bottom: 2px;
+    }
+    .meta-row {
+      margin-top: 0.85rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.25rem;
+      justify-content: center;
+    }
+    @media (min-width: 640px) { .meta-row { justify-content: flex-start; } }
+    .meta-row span { display: inline-flex; align-items: center; gap: 0.35rem; }
+
     nav {
-      display: flex; justify-content: center; gap: 1.5rem;
-      margin-top: 1.75rem; flex-wrap: wrap;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 2rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
     }
     nav a {
       color: var(--text);
       font-weight: 500;
-      padding: 0.4rem 0.9rem;
+      font-size: 0.9rem;
+      padding: 0.4rem 0.95rem;
       border-radius: 999px;
       border: 1px solid transparent;
     }
-    nav a:hover { border-color: var(--border); background: var(--surface); }
-    section { padding: 3rem 0; border-bottom: 1px solid var(--border); }
+    nav a:hover {
+      border-color: var(--border);
+      background: var(--surface);
+      color: var(--green-bright);
+    }
+
+    section {
+      padding: 2.75rem 0;
+      border-bottom: 1px solid var(--border);
+    }
     section:last-of-type { border-bottom: none; }
     h2 {
-      font-size: 1.35rem;
-      font-weight: 600;
+      font-size: 1.25rem;
+      font-weight: 700;
       margin-bottom: 1.25rem;
-      color: var(--accent);
+      color: var(--green-bright);
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      font-size: 0.95rem;
     }
-    p { color: var(--muted); margin-bottom: 1rem; }
+    p { color: var(--muted); margin-bottom: 0.9rem; }
+
+    /* Cards */
     .card {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.25rem 1.5rem;
+      border-radius: 10px;
+      padding: 1.15rem 1.35rem;
+      margin-bottom: 0.85rem;
+      transition: border-color 0.2s;
+    }
+    .card:hover { border-color: #3a3a3a; }
+    .card h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+    .card h3 a { color: var(--text); }
+    .card h3 a:hover { color: var(--green-bright); }
+    .card .meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.45rem;
+    }
+    .card p { margin-bottom: 0; font-size: 0.92rem; }
+
+    /* Skills tags */
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .skill {
+      background: #0d3d1f;
+      color: #bbf7d0;
+      border: 1px solid #166534;
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+    }
+
+    /* Projects grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+    @media (min-width: 640px) {
+      .projects-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .lang {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--green-bright);
+      background: rgba(34,197,94,0.12);
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      margin-right: 0.35rem;
+    }
+
+    /* Contact */
+    .contact-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .contact-list a { color: var(--text); }
+    .contact-list a:hover { color: var(--green-bright); }
+    .links {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-top: 1.25rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--green);
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 0.55rem 1.1rem;
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: #15803d; color: #fff; }
+    .btn.outline {
+      background: transparent;
+      color: var(--green-bright);
+      border: 1px solid var(--green);
+    }
+    .btn.outline:hover { background: rgba(34,197,94,0.12); color: var(--green-bright); }
+
+    footer {
+      text-align: center;
+      padding: 2rem 0 2.5rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .edu-item, .cert-item {
       margin-bottom: 1rem;
     }
-    .card h3 { font-size: 1.05rem; margin-bottom: 0.35rem; }
-    .card .meta { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.5rem; }
-    .links { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; }
-    .btn {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      background: var(--accent); color: #0f172a;
-      font-weight: 600; padding: 0.6rem 1.2rem;
-      border-radius: 8px; transition: background 0.2s;
+    .edu-item strong, .cert-item strong {
+      color: var(--text);
+      display: block;
+      margin-bottom: 0.2rem;
     }
-    .btn:hover { background: var(--accent-hover); color: #0f172a; }
-    .btn.outline {
-      background: transparent; color: var(--accent);
-      border: 1px solid var(--accent);
-    }
-    .btn.outline:hover { background: rgba(56,189,248,0.1); }
-    footer {
-      text-align: center; padding: 2.5rem 0;
-      color: var(--muted); font-size: 0.9rem;
+    .cert-item ul {
+      margin: 0.35rem 0 0 1.1rem;
+      color: var(--muted);
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <img class="avatar" src="https://avatars.githubusercontent.com/u/45104417?v=4" alt="Tarek Ghajary" />
-      <h1>Tarek Ghajary</h1>
-      <p class="tagline">Economics student & developer</p>
-      <p class="location">Bako'o, Tartous, Syria</p>
+  <header>
+    <div class="container">
+      <div class="hero">
+        <img class="avatar" src="https://avatars.githubusercontent.com/u/45104417?v=4" alt="Tarek Ghajary" width="140" height="140" />
+        <div>
+          <h1>Tarek Ghajary</h1>
+          <p class="role">Data Analyst</p>
+          <div class="meta-row">
+            <span>📍 Tartous – Drekish, Syria</span>
+            <span>🎂 05 January 1995</span>
+            <span>🎖️ Military service: Free</span>
+          </div>
+        </div>
+      </div>
       <nav>
         <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#certificates">Certificates</a>
+        <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
       </nav>
-    </header>
+    </div>
+  </header>
 
+  <main class="container">
     <section id="about">
-      <h2>About</h2>
+      <h2>About Me</h2>
       <p>
-        Studied at the Faculty of Economy — University of Tartous.
-        Passionate about technology, data, and building useful things on the web.
+        Bachelor's degree holder in Economics with a specialization in Financial and Banking Sciences,
+        with expertise in data analysis, statistical methods, and database management.
+        Skilled in collecting, organizing, cleaning, and analyzing data to produce reliable statistical
+        indicators and analytical reports that support evidence-based decision-making and institutional planning.
       </p>
       <p>
-        Based in Bako'o, Tartous, Syria. Working with Ajadya Group.
+        Proficient in Python, SQL, and data analysis tools, with strong analytical thinking, attention to detail,
+        and a commitment to accuracy, integrity, and continuous improvement. Seeking to contribute analytical and
+        statistical expertise to enhance organizational performance and support data-driven public sector decision-making.
       </p>
     </section>
 
-    <section id="projects">
-      <h2>Projects</h2>
-      <div class="card">
-        <h3>Personal Portfolio</h3>
-        <p class="meta">This site · GitHub Pages</p>
-        <p>A clean, responsive portfolio hosted on GitHub Pages.</p>
+    <section id="education">
+      <h2>Education</h2>
+      <div class="card edu-item">
+        <strong>University of Tartous — Faculty of Economy</strong>
+        <p class="meta">Banking and Finance · Bachelor · 2012 – 2020</p>
       </div>
-      <div class="card">
-        <h3>More coming soon</h3>
-        <p class="meta">GitHub · Open source</p>
-        <p>Check my <a href="https://github.com/CHESyrian" target="_blank" rel="noopener">GitHub profile</a> for repositories and ongoing work.</p>
+    </section>
+
+    <section id="certificates">
+      <h2>Certificates</h2>
+      <div class="card cert-item">
+        <strong>2025 — IBM Data Science Professional Certificate</strong>
+        <p class="meta">Coursera · 10 courses · Capstone project</p>
+        <ul>
+          <li>Data Science methodologies and tools</li>
+          <li>Python programming language</li>
+          <li>SQL with MySQL and DB2 Databases</li>
+          <li>IBM Watson Studio AI · Machine Learning models</li>
+        </ul>
+      </div>
+      <div class="card cert-item">
+        <strong>2025 — IBM Data Analyst Professional Certificate</strong>
+        <p class="meta">Coursera · 9 courses</p>
+        <ul>
+          <li>Excel, SQL, relational databases, Python, Jupyter Notebooks</li>
+          <li>IBM Cognos Analytics · dashboards & reports</li>
+          <li>Data visualization, storytelling, and real-world analysis</li>
+        </ul>
+      </div>
+      <div class="card cert-item">
+        <strong>2020 — Python and Statistics for Financial Analysis</strong>
+        <ul>
+          <li>Technical Analysis of Markets</li>
+          <li>Statistics and Probability</li>
+          <li>Python for Finance</li>
+        </ul>
+      </div>
+      <div class="card cert-item">
+        <strong>2020 — Responsive Website Basics Code</strong>
+        <ul>
+          <li>HTML, CSS and JavaScript</li>
+          <li>jQuery and Bootstrap · UI/UX Design</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skills-grid">
+        <span class="skill">Data Science</span>
+        <span class="skill">Data Analysis</span>
+        <span class="skill">Python</span>
+        <span class="skill">SQL</span>
+        <span class="skill">Excel</span>
+        <span class="skill">Pandas</span>
+        <span class="skill">NumPy</span>
+        <span class="skill">Matplotlib</span>
+        <span class="skill">Seaborn</span>
+        <span class="skill">Plotly</span>
+        <span class="skill">Bokeh</span>
+        <span class="skill">Statistics</span>
+        <span class="skill">Probability</span>
+        <span class="skill">Data Visualization</span>
+        <span class="skill">Dashboards</span>
+        <span class="skill">Data Storytelling</span>
+        <span class="skill">IBM Cognos Analytics</span>
+        <span class="skill">Financial Analysis</span>
+        <span class="skill">Gen AI Tools</span>
+        <span class="skill">Web Scraping</span>
+        <span class="skill">OpenCV</span>
+        <span class="skill">Django</span>
+        <span class="skill">Flask</span>
+        <span class="skill">Full-Stack Web</span>
+        <span class="skill">HTML / CSS / JS</span>
+        <span class="skill">Linux</span>
+        <span class="skill">GitHub</span>
+        <span class="skill">Colab</span>
+        <span class="skill">Kaggle</span>
+        <span class="skill">MS Office</span>
+        <span class="skill">Command Line</span>
+        <span class="skill">Presentation</span>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Projects (GitHub)</h2>
+      <p style="margin-bottom:1.25rem">All public repositories from <a href="https://github.com/CHESyrian" target="_blank" rel="noopener">github.com/CHESyrian</a></p>
+      <div class="projects-grid">
+
+        <div class="card">
+          <h3><a href="https://github.com/CHESyrian/Superstore_Sales_Analytics" target="_blank" rel="noopener">Superstore Sales Analytics</a></h3>
+          <p class="meta"><span class="lang">Jupyter</span> Data Analytics · GenAI</p>
+          <p>Sales analytics project using generative AI, pandas, matplotlib, seaborn, scikit-learn.</p>
+        </div>
+
+        <div class="card">
+          <h3><a href="https://github.com/CHESyrian/BankAnalytics_ByGenAI" target="_blank" rel="noopener">Bank Analytics by GenAI</a></h3>
+          <p class="meta"><span class="lang">Jupyter</span> Banking · Finance</p>
+          <p>Banking and finance data analysis with generative AI tools.</p>
+        </div>
+
+        <div class="card">
+          <h3><a href="https://github.com/CHESyrian/ECommerceDataAnalysis_ByDeepSeek" target="_blank" rel="noopener">E-Commerce Data Analysis</a></h3>
+          <p class="meta"><span class="lang">Jupyter</span> DeepSeek · Analytics</p>
+          <p>E-commerce dataset analysis powered by DeepSeek / GenAI.</p>
+        </div>
+
+        <div class="card">
+          <h3><a href="https://github.com/CHESyrian/California_Houses_Analytics" target="_blank" rel="noopener">California Houses Analytics</a></h3>
+          <p class="meta"><span class="lang">Analytics</span> GenAI</p>
+          <p>Housing data analytics project using generative AI.</p>
+        </div>
+
+        <div class="card">
+          <h3><a href="https://github.com/CHESyrian/Loan_Status_Classification" target="_blank" rel="noopener">Loan Status Classification</a></h3>
+          <p class="meta"><span class="lang">Jupyter</span> ML · Classification</p>
+          <p>Data science project classifying loan status with pandas, scikit-learn, Bokeh.</p>
+        </div>
+
+        <div class="card">
+          <h3><a href="https://github.com/CHESyrian/Houses_Prices_Prediction" target="_blank" rel="noopener">House Prices Prediction</a></h3>
+          <p class="meta"><span class="lang">Jupyter</span> ML · Regression</p>
+          <p>Predicting house prices with classical ML and visualization.</p>
+        </div>
+
+        <div class="card">
+          <h3><a href="https://github.com/CHESyrian/Forecasting_Future_Sales" target="_blank" rel="noopener">Forecasting Future Sales</a></h3>
+          <p class="meta"><span class="lang">Jupyter</span> Time series</p>
+          <p>Sales forecasting with scikit-learn, matplotlib, Bokeh.</p>
+        </div>
+
+        <div class="card">
+          <h3><a href="https://github.com/CHESyrian/Analytics_of_The_Titanic_Disaster" target="_blank" rel="noopener">Titanic Disaster Analytics</a></h3>
+          <p class="meta"><span class="lang">Jupyter</span> Classic dataset</p>
+          <p>Exploratory analysis and modeling on the Titanic dataset.</p>
+        </div>
+
+        <div class="card">
+          <h3><a href="https://github.com/CHESyrian/WW2Operations" target="_blank" rel="noopener">WW2 Operations</a></h3>
+          <p class="meta"><span class="lang">Analytics</span></p>
+          <p>Data analytics project on WWII operations data.</p>
+        </div>
+
+        <div class="card">
+          <h3><a href="https://github.com/CHESyrian/Market_Analysis" target="_blank" rel="noopener">Market Analysis</a></h3>
+          <p class="meta"><span class="lang">Jupyter</span> Stocks · Forex</p>
+          <p>Market analysis covering stocks and forex.</p>
+        </div>
+
+        <div class="card">
+          <h3><a href="https://github.com/CHESyrian/IBM_DataScience_Capstone" target="_blank" rel="noopener">IBM Data Science Capstone</a></h3>
+          <p class="meta"><span class="lang">Jupyter</span> Capstone</p>
+          <p>Capstone project from the IBM Data Science Professional Certificate.</p>
+        </div>
+
+        <div class="card">
+          <h3><a href="https://github.com/CHESyrian/Coursera_GuidedProjects" target="_blank" rel="noopener">Coursera Guided Projects</a></h3>
+          <p class="meta"><span class="lang">Jupyter</span></p>
+          <p>Collection of Coursera guided projects.</p>
+        </div>
+
+        <div class="card">
+          <h3><a href="https://github.com/CHESyrian/DataScienceExamples" target="_blank" rel="noopener">Data Science Examples</a></h3>
+          <p class="meta"><span class="lang">Jupyter</span> Python</p>
+          <p>Examples of data science workflows with Python.</p>
+        </div>
+
+        <div class="card">
+          <h3><a href="https://github.com/CHESyrian/DataScienceLibraries" target="_blank" rel="noopener">Data Science Libraries</a></h3>
+          <p class="meta"><span class="lang">Jupyter</span></p>
+          <p>Examples for core data science packages (pandas, numpy, plotly, bokeh…).</p>
+        </div>
+
+        <div class="card">
+          <h3><a href="https://github.com/CHESyrian/Bokeh_Examples" target="_blank" rel="noopener">Bokeh Examples</a></h3>
+          <p class="meta"><span class="lang">Jupyter</span> Visualization</p>
+          <p>Interactive visualization examples with Bokeh.</p>
+        </div>
+
+        <div class="card">
+          <h3><a href="https://github.com/CHESyrian/CHEMDReader" target="_blank" rel="noopener">CHEMDReader</a></h3>
+          <p class="meta"><span class="lang">Python</span> Flask</p>
+          <p>Python / Flask application (markdown reader).</p>
+        </div>
+
+        <div class="card">
+          <h3><a href="https://github.com/CHESyrian/CyberSecuritySeries" target="_blank" rel="noopener">Cyber Security Series</a></h3>
+          <p class="meta"><span class="lang">Python</span></p>
+          <p>Series of cybersecurity-related Python work.</p>
+        </div>
+
+        <div class="card">
+          <h3><a href="https://github.com/CHESyrian/SalesManager" target="_blank" rel="noopener">Sales Manager</a></h3>
+          <p class="meta"><span class="lang">Python</span> PyQt5 · MySQL</p>
+          <p>Desktop sales management app with PyQt5 and MySQL.</p>
+        </div>
+
+        <div class="card">
+          <h3><a href="https://github.com/CHESyrian/CLBP_Web" target="_blank" rel="noopener">CLBP Web</a></h3>
+          <p class="meta"><span class="lang">JavaScript</span> Django</p>
+          <p>Django web application (HTML5, CSS3, AJAX, JS).</p>
+        </div>
+
+        <div class="card">
+          <h3><a href="https://github.com/CHESyrian/Estebyan" target="_blank" rel="noopener">Estebyan</a></h3>
+          <p class="meta"><span class="lang">Python</span> Django</p>
+          <p>Django web app with AJAX, jQuery, HTML5, CSS3.</p>
+        </div>
+
+        <div class="card">
+          <h3><a href="https://github.com/CHESyrian/Syrians" target="_blank" rel="noopener">Syrians</a></h3>
+          <p class="meta"><span class="lang">CSS</span> Django</p>
+          <p>Website built with Python / Django.</p>
+        </div>
+
+        <div class="card">
+          <h3><a href="https://github.com/CHESyrian/CHE_Functions" target="_blank" rel="noopener">CHE Functions</a></h3>
+          <p class="meta"><span class="lang">Python</span></p>
+          <p>Reusable helper functions for other repositories.</p>
+        </div>
+
+        <div class="card">
+          <h3><a href="https://github.com/CHESyrian/CHE_Resize_Images" target="_blank" rel="noopener">CHE Resize Images</a></h3>
+          <p class="meta"><span class="lang">Python</span></p>
+          <p>Image resizing utility application.</p>
+        </div>
+
+        <div class="card">
+          <h3><a href="https://github.com/CHESyrian/CHE_Rename_Files" target="_blank" rel="noopener">CHE Rename Files</a></h3>
+          <p class="meta"><span class="lang">Python</span> PyQt5</p>
+          <p>GUI tool (PyQt5) to rename files across folders.</p>
+        </div>
+
+        <div class="card">
+          <h3><a href="https://github.com/CHESyrian/CHEEditor" target="_blank" rel="noopener">CHE Editor</a></h3>
+          <p class="meta"><span class="lang">Python</span> Tkinter</p>
+          <p>Simple text editor built with Python and Tkinter.</p>
+        </div>
+
+        <div class="card">
+          <h3><a href="https://github.com/CHESyrian/Benifits" target="_blank" rel="noopener">Benefits Calculator</a></h3>
+          <p class="meta"><span class="lang">Python</span></p>
+          <p>App to calculate benefits.</p>
+        </div>
+
+        <div class="card">
+          <h3><a href="https://github.com/CHESyrian/LogisticsShippingRates" target="_blank" rel="noopener">Logistics Shipping Rates</a></h3>
+          <p class="meta"><span class="lang">Python</span></p>
+          <p>Shipping rates utility / calculations.</p>
+        </div>
+
+        <div class="card">
+          <h3><a href="https://github.com/CHESyrian/Google_Fonts" target="_blank" rel="noopener">Google Fonts (offline)</a></h3>
+          <p class="meta"><span class="lang">CSS</span> Frontend</p>
+          <p>15 fonts packaged for offline use in frontend and Django projects.</p>
+        </div>
+
+        <div class="card">
+          <h3><a href="https://github.com/CHESyrian/github-final-project" target="_blank" rel="noopener">GitHub Final Project</a></h3>
+          <p class="meta"><span class="lang">Shell</span> IBM course</p>
+          <p>Final project from the IBM Git and GitHub course.</p>
+        </div>
+
+        <div class="card">
+          <h3><a href="https://github.com/CHESyrian/CHEChannel" target="_blank" rel="noopener">CHE Channel</a></h3>
+          <p class="meta"><span class="lang">Python</span></p>
+          <p>Python project (CHE Channel).</p>
+        </div>
+
+        <div class="card">
+          <h3><a href="https://github.com/CHESyrian/CHESyrian.github.io" target="_blank" rel="noopener">This Portfolio Site</a></h3>
+          <p class="meta"><span class="lang">HTML</span> GitHub Pages</p>
+          <p>Personal portfolio website (this site).</p>
+        </div>
+
       </div>
     </section>
 
     <section id="contact">
       <h2>Contact</h2>
-      <p>Feel free to reach out or explore my work online.</p>
+      <div class="contact-list">
+        <div>📧 <a href="mailto:tarek940gh@gmail.com">tarek940gh@gmail.com</a></div>
+        <div>📱 <a href="tel:+963935968818">+963 935 96 88 18</a></div>
+        <div>📍 Tartous – Drekish, Syria</div>
+      </div>
       <div class="links">
         <a class="btn" href="https://github.com/CHESyrian" target="_blank" rel="noopener">GitHub</a>
         <a class="btn outline" href="https://www.kaggle.com/tarekghajary" target="_blank" rel="noopener">Kaggle</a>
         <a class="btn outline" href="https://twitter.com/Tarekgh15" target="_blank" rel="noopener">X / Twitter</a>
+        <a class="btn outline" href="mailto:tarek940gh@gmail.com">Email</a>
       </div>
     </section>
+  </main>
 
-    <footer>
-      <p>© 2026 Tarek Ghajary · Built with HTML & hosted on GitHub Pages</p>
-    </footer>
-  </div>
+  <footer>
+    <div class="container">
+      <p>© 2026 Tarek Ghajary · Data Analyst · Hosted on GitHub Pages</p>
+    </div>
+  </footer>
 </body>
 </html>
