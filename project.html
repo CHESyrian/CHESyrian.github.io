@@ -7,6 +7,7 @@
   <meta name="theme-color" content="#0b0f14" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
@@ -22,7 +23,7 @@
   </header>
 
   <main class="tab-panels">
-    <div class="container">
+    <div class="container project-main">
       <div class="project-header">
         <p class="eyebrow" id="project-eyebrow">Project</p>
         <h1 class="panel-title" id="project-title">Loading…</h1>
@@ -40,7 +41,8 @@
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <!-- UMD build exposes global `marked` -->
+  <script src="https://cdn.jsdelivr.net/npm/marked@11.2.0/marked.min.js"></script>
   <script src="js/project.js"></script>
 </body>
 </html>
