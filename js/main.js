@@ -112,6 +112,9 @@
 
   var dots = Array.from(dotsWrap.querySelectorAll('.carousel-dot'));
 
+  var counterEl = document.getElementById('carousel-counter');
+  var progressEl = document.getElementById('carousel-progress-bar');
+
   function goTo(i) {
     index = (i + slides.length) % slides.length;
     track.style.transform = 'translateX(-' + index * 100 + '%)';
@@ -121,6 +124,12 @@
     dots.forEach(function (d, n) {
       d.classList.toggle('active', n === index);
     });
+    if (counterEl) {
+      counterEl.textContent = (index + 1) + ' / ' + slides.length;
+    }
+    if (progressEl) {
+      progressEl.style.width = ((index + 1) / slides.length * 100) + '%';
+    }
   }
 
   function next() {
