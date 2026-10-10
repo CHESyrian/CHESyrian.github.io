@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project | Tarek Ghajary</title>
+  <meta name="theme-color" content="#0b0f14" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="project-page">
+
+  <header class="project-topbar">
+    <div class="container project-topbar-inner">
+      <a class="btn btn-ghost" href="index.html#projects">← Back to portfolio</a>
+      <div class="project-topbar-actions">
+        <a class="btn btn-ghost" id="github-link" href="#" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="tab-panels">
+    <div class="container">
+      <div class="project-header">
+        <p class="eyebrow" id="project-eyebrow">Project</p>
+        <h1 class="panel-title" id="project-title">Loading…</h1>
+        <p class="panel-subtitle" id="project-meta"></p>
+      </div>
+
+      <div id="readme-status" class="readme-status">Loading README…</div>
+      <article id="readme" class="readme markdown-body card" hidden></article>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Tarek Ghajary · Data Analyst · GitHub Pages</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="js/project.js"></script>
+</body>
+</html>
