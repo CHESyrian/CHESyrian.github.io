@@ -5,7 +5,7 @@
   'use strict';
 
   const OWNER = 'CHESyrian';
-  params = new URLSearchParams(location.search);
+  const params = new URLSearchParams(location.search);
   const repo = (params.get('repo') || '').trim();
 
   const titleEl = document.getElementById('project-title');
@@ -32,7 +32,6 @@
   githubLink.href = 'https://github.com/' + OWNER + '/' + repo;
   githubLink.textContent = 'View on GitHub';
 
-  // Repo metadata
   fetch('https://api.github.com/repos/' + OWNER + '/' + repo)
     .then(function (r) {
       if (!r.ok) throw new Error('Repo not found');
@@ -50,7 +49,6 @@
       metaEl.textContent = 'Could not load repository details';
     });
 
-  // README (API returns base64 content)
   fetch('https://api.github.com/repos/' + OWNER + '/' + repo + '/readme')
     .then(function (r) {
       if (!r.ok) throw new Error('No README');
@@ -77,7 +75,6 @@
         readmeEl.innerHTML = '<pre>' + escapeHtml(md) + '</pre>';
       }
 
-      // Fix relative image links to point at GitHub raw
       readmeEl.querySelectorAll('img').forEach(function (img) {
         var src = img.getAttribute('src') || '';
         if (src && !/^https?:\/\//i.test(src) && !src.startsWith('data:')) {
