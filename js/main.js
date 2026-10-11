@@ -296,43 +296,40 @@
     bindAccordion(rootEl);
   }
 
+  function buildFallbackRepos() {
+    return Object.keys(REPO_CATEGORY).map(function (name) {
+      return {
+        name: name,
+        fork: false,
+        language: null,
+        description: (REPO_META[name] && REPO_META[name].desc) || ''
+      };
+    });
+  }
+
   function loadProjects() {
     var rootEl = document.getElementById('projects-root');
     if (!rootEl) return;
 
+    // Show known list immediately so UI never sticks on "Loading…"
+    renderProjects(buildFallbackRepos());
+
     var url =
       'https://api.github.com/users/' +
       OWNER +
-      '/repos?per_page=100&sort=updated&type=owner';
+      '/repos?per_page=100&sort=updated';
 
-    fetchWithTimeout(url, 12000)
+    fetchWithTimeout(url, 8000)
       .then(function (r) {
         if (!r.ok) throw new Error('GitHub API ' + r.status);
         return r.json();
       })
       .then(function (data) {
-        if (!Array.isArray(data)) throw new Error('bad payload');
+        if (!Array.isArray(data) || !data.length) return;
         renderProjects(data);
       })
       .catch(function (err) {
-        console.error(err);
-        var fallback = Object.keys(REPO_CATEGORY).map(function (name) {
-          return {
-            name: name,
-            fork: false,
-            language: null,
-            description: (REPO_META[name] && REPO_META[name].desc) || ''
-          };
-        });
-        renderProjects(fallback);
-        var note = document.createElement('p');
-        note.className = 'readme-status';
-        note.style.marginTop = '0.75rem';
-        note.innerHTML =
-          'Showing cached project list (GitHub API unavailable). <a href="https://github.com/' +
-          OWNER +
-          '" target="_blank" rel="noopener">View on GitHub</a>';
-        rootEl.appendChild(note);
+        console.warn('GitHub API unavailable, using cached project list', err);
       });
   }
 
