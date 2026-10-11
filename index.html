@@ -1,1 +1,129 @@
-PLACEHOLDER
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tarek Ghajary | Data Analyst</title>
+  <meta name="description" content="Portfolio of Tarek Ghajary — Data Analyst, Economics graduate, IBM Data Science & Data Analyst certified." />
+  <meta name="theme-color" content="#0b0f14" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+        else if (window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches)
+          document.documentElement.setAttribute('data-theme', 'light');
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+
+  <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle theme" title="Toggle theme">
+    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+  </button>
+
+  <header class="profile-header">
+    <div class="cover" role="img" aria-label="Cover background"></div>
+    <div class="container profile-body">
+      <div class="profile-row">
+        <div class="avatar-wrap">
+          <img class="avatar" id="profile-photo" src="assets/Ptofile-imsge.png" alt="Tarek Ghajary" width="152" height="152" />
+          <span class="avatar-status" title="Available"></span>
+        </div>
+        <div class="profile-info">
+          <span class="eyebrow">Open to opportunities</span>
+          <h1>Tarek Ghajary</h1>
+          <p class="profile-role">Data Analyst · Economics · Data Science</p>
+          <div class="profile-meta">
+            <span>📍 Tartous – Drekish, Syria</span>
+            <span>🎂 05 Jan 1995</span>
+            <span>✓ Military service: Free</span>
+          </div>
+          <div class="profile-actions">
+            <a class="btn btn-primary" href="https://github.com/CHESyrian" target="_blank" rel="noopener">GitHub</a>
+            <a class="btn btn-ghost" href="mailto:tarek940gh@gmail.com">Email</a>
+            <a class="btn btn-ghost" href="https://www.kaggle.com/tarekghajary" target="_blank" rel="noopener">Kaggle</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="tabs-wrap">
+    <div class="container">
+      <div class="tabs" role="tablist" aria-label="Profile sections">
+        <button type="button" class="tab-btn active" role="tab" data-tab="about" aria-selected="true">About</button>
+        <button type="button" class="tab-btn" role="tab" data-tab="education" aria-selected="false">Education</button>
+        <button type="button" class="tab-btn" role="tab" data-tab="certificates" aria-selected="false">Certificates</button>
+        <button type="button" class="tab-btn" role="tab" data-tab="skills" aria-selected="false">Skills</button>
+        <button type="button" class="tab-btn" role="tab" data-tab="projects" aria-selected="false">Projects</button>
+        <button type="button" class="tab-btn" role="tab" data-tab="gallery" aria-selected="false">Gallery</button>
+        <button type="button" class="tab-btn" role="tab" data-tab="contact" aria-selected="false">Contact</button>
+      </div>
+    </div>
+  </div>
+
+  <main class="tab-panels">
+    <div class="container">
+      <div id="panel-about" class="tab-panel active" role="tabpanel">
+        <h2 class="panel-title">About me</h2>
+        <p class="panel-subtitle">Background and focus</p>
+        <div class="about-text">
+          <p>Bachelor's degree holder in Economics with a specialization in Financial and Banking Sciences, with expertise in data analysis, statistical methods, and database management.</p>
+          <p>Proficient in Python, SQL, and data analysis tools. Seeking to contribute analytical expertise to data-driven decision-making.</p>
+        </div>
+      </div>
+      <div id="panel-education" class="tab-panel" role="tabpanel">
+        <h2 class="panel-title">Education</h2>
+        <div class="stack"><div class="card"><p class="card-title">University of Tartous — Faculty of Economy</p><p class="card-meta"><span class="badge">Bachelor</span> Banking and Finance · 2012 – 2020</p></div></div>
+      </div>
+      <div id="panel-certificates" class="tab-panel" role="tabpanel">
+        <h2 class="panel-title">Certificates</h2>
+        <div class="stack">
+          <div class="card"><p class="card-title">IBM Data Science Professional Certificate</p><p class="card-meta"><span class="badge badge-green">2025</span> Coursera</p><a class="cert-img-link" href="assets/IBM-DataScience.png" target="_blank" rel="noopener"><img class="cert-img" src="assets/IBM-DataScience.png" alt="IBM Data Science" loading="lazy" /></a></div>
+          <div class="card"><p class="card-title">IBM Data Analyst Professional Certificate</p><p class="card-meta"><span class="badge badge-green">2025</span> Coursera</p><a class="cert-img-link" href="assets/IBM-DataAnalyst.png" target="_blank" rel="noopener"><img class="cert-img" src="assets/IBM-DataAnalyst.png" alt="IBM Data Analyst" loading="lazy" /></a></div>
+        </div>
+      </div>
+      <div id="panel-skills" class="tab-panel" role="tabpanel">
+        <h2 class="panel-title">Skills</h2>
+        <div class="skills-grid">
+          <span class="skill">Data Science</span><span class="skill">Data Analysis</span><span class="skill">Python</span><span class="skill">SQL</span><span class="skill">Pandas</span><span class="skill">NumPy</span><span class="skill">Matplotlib</span><span class="skill">Seaborn</span><span class="skill">Plotly</span><span class="skill">Statistics</span><span class="skill">Django</span><span class="skill">Flask</span><span class="skill">GitHub</span>
+        </div>
+      </div>
+      <div id="panel-projects" class="tab-panel" role="tabpanel">
+        <h2 class="panel-title">Projects</h2>
+        <p class="panel-subtitle">Public repositories on <a href="https://github.com/CHESyrian" target="_blank" rel="noopener">GitHub</a> — auto-synced · click a name to read its README</p>
+        <div id="projects-root" class="accordion">
+          <p id="projects-loading" class="readme-status" style="margin:1rem 0">Loading projects from GitHub…</p>
+        </div>
+      </div>
+      <div id="panel-gallery" class="tab-panel" role="tabpanel">
+        <h2 class="panel-title">Gallery</h2>
+        <p class="panel-subtitle">See project visuals on GitHub repositories.</p>
+      </div>
+      <div id="panel-contact" class="tab-panel" role="tabpanel">
+        <h2 class="panel-title">Contact</h2>
+        <div class="stack">
+          <div class="card"><p class="card-title">Email</p><p class="card-desc"><a href="mailto:tarek940gh@gmail.com">tarek940gh@gmail.com</a></p></div>
+          <div class="card"><p class="card-title">GitHub</p><p class="card-desc"><a href="https://github.com/CHESyrian" target="_blank" rel="noopener">github.com/CHESyrian</a></p></div>
+          <div class="card"><p class="card-title">Location</p><p class="card-desc">Tartous – Drekish, Syria</p></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Tarek Ghajary · Data Analyst · GitHub Pages</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
