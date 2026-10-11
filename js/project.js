@@ -1,11 +1,13 @@
 /**
  * Project detail page — fetch README and render as HTML
- * Images: relative paths, repo-root paths, and GitHub blob URLs → raw.githubusercontent.com
+ * Sources (in order): raw.githubusercontent.com → jsDelivr → GitHub API
+ * Each request times out so the UI never stays on "Loading README…" forever.
  */
 (function () {
   'use strict';
 
   var OWNER = 'CHESyrian';
+  var FETCH_TIMEOUT_MS = 12000;
   var params = new URLSearchParams(location.search);
   var repo = (params.get('repo') || '').trim();
   /** Branch used to load README — also used for image/link resolution */
@@ -31,22 +33,42 @@
   }
 
   /**
+   * fetch with AbortController timeout
+   */
+  function fetchWithTimeout(url, options) {
+    options = options || {};
+    var controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
+    var timer = null;
+    if (controller) {
+      options.signal = controller.signal;
+      timer = setTimeout(function () {
+        try {
+          controller.abort();
+        } catch (e) {}
+      }, FETCH_TIMEOUT_MS);
+    }
+    return fetch(url, options)
+      .then(function (r) {
+        if (timer) clearTimeout(timer);
+        return r;
+      })
+      .catch(function (err) {
+        if (timer) clearTimeout(timer);
+        throw err;
+      });
+  }
+
+  /**
    * Turn any README image/link path into a URL that works on this static site.
-   * - https://… → keep (but blob → raw for images)
-   * - ./file.png, docs/a.png → raw.githubusercontent.com/owner/repo/branch/…
-   * - /docs/a.png (repo-root style) → same
    */
   function resolveRepoUrl(path, forImage) {
     if (!path) return path;
     path = String(path).trim();
 
-    // data: and anchors
     if (path.indexOf('data:') === 0 || path.charAt(0) === '#') return path;
 
-    // Absolute http(s)
     if (/^https?:\/\//i.test(path)) {
       if (forImage) {
-        // github.com/owner/repo/blob/branch/path → raw
         var blob =
           /^https?:\/\/github\.com\/([^/]+)\/([^/]+)\/blob\/([^/]+)\/(.+)$/i.exec(
             path
@@ -63,17 +85,14 @@
             blob[4]
           );
         }
-        // already raw or other CDN — keep
       }
       return path;
     }
 
-    // Protocol-relative
     if (path.indexOf('//') === 0) {
       return 'https:' + path;
     }
 
-    // Strip leading ./ and /
     var rel = path.replace(/^\.\//, '').replace(/^\//, '');
 
     var base =
@@ -86,9 +105,18 @@
       '/';
 
     if (forImage) {
-      return base + rel;
+      // Prefer jsDelivr for images (often works when raw.githubusercontent is blocked)
+      return (
+        'https://cdn.jsdelivr.net/gh/' +
+        OWNER +
+        '/' +
+        repo +
+        '@' +
+        readmeBranch +
+        '/' +
+        rel
+      );
     }
-    // Non-image links open on GitHub
     return (
       'https://github.com/' +
       OWNER +
@@ -113,16 +141,31 @@
       if (!img.getAttribute('alt')) {
         img.setAttribute('alt', 'README image');
       }
-      // If master 404s, retry main once
       img.addEventListener(
         'error',
         function onErr() {
           img.removeEventListener('error', onErr);
           var s = img.getAttribute('src') || '';
+          // Fallbacks: jsdelivr ↔ raw, master ↔ main
+          if (s.indexOf('cdn.jsdelivr.net/gh/') !== -1) {
+            var m = /cdn\.jsdelivr\.net\/gh\/([^/]+)\/([^@]+)@([^/]+)\/(.+)$/.exec(s);
+            if (m) {
+              img.src =
+                'https://raw.githubusercontent.com/' +
+                m[1] +
+                '/' +
+                m[2] +
+                '/' +
+                m[3] +
+                '/' +
+                m[4];
+              return;
+            }
+          }
           if (s.indexOf('/master/') !== -1) {
-            img.src = s.replace('/master/', '/main/');
+            img.src = s.replace('/master/', '/main/').replace('@master/', '@main/');
           } else if (s.indexOf('/main/') !== -1) {
-            img.src = s.replace('/main/', '/master/');
+            img.src = s.replace('/main/', '/master/').replace('@main/', '@master/');
           }
         },
         { once: true }
@@ -134,11 +177,8 @@
       if (!href || href.charAt(0) === '#' || href.indexOf('mailto:') === 0) {
         return;
       }
-      // If the link wraps only an image, still resolve relative targets
       if (!/^https?:\/\//i.test(href) && href.indexOf('//') !== 0) {
         a.setAttribute('href', resolveRepoUrl(href, false));
-      } else if (/github\.com\/[^/]+\/[^/]+\/blob\//i.test(href)) {
-        // keep blob links as-is for navigation
       }
       if (/^https?:\/\//i.test(a.getAttribute('href') || '')) {
         a.target = '_blank';
@@ -196,7 +236,8 @@
   githubLink.href = 'https://github.com/' + OWNER + '/' + repo;
   githubLink.textContent = 'View on GitHub';
 
-  fetch('https://api.github.com/repos/' + OWNER + '/' + repo)
+  // Repo metadata (non-blocking)
+  fetchWithTimeout('https://api.github.com/repos/' + OWNER + '/' + repo)
     .then(function (r) {
       if (!r.ok) throw new Error('not found');
       return r.json();
@@ -212,12 +253,18 @@
       }
     })
     .catch(function () {
-      metaEl.textContent = '';
+      /* ignore — README load is independent */
     });
 
   function loadFromRaw(branch) {
-    return fetch(
-      'https://raw.githubusercontent.com/' + OWNER + '/' + repo + '/' + branch + '/README.md'
+    return fetchWithTimeout(
+      'https://raw.githubusercontent.com/' +
+        OWNER +
+        '/' +
+        repo +
+        '/' +
+        branch +
+        '/README.md'
     ).then(function (r) {
       if (!r.ok) throw new Error('raw ' + branch);
       readmeBranch = branch;
@@ -225,8 +272,26 @@
     });
   }
 
+  function loadFromJsDelivr(branch) {
+    return fetchWithTimeout(
+      'https://cdn.jsdelivr.net/gh/' +
+        OWNER +
+        '/' +
+        repo +
+        '@' +
+        branch +
+        '/README.md'
+    ).then(function (r) {
+      if (!r.ok) throw new Error('jsdelivr ' + branch);
+      readmeBranch = branch;
+      return r.text();
+    });
+  }
+
   function loadFromApi() {
-    return fetch('https://api.github.com/repos/' + OWNER + '/' + repo + '/readme')
+    return fetchWithTimeout(
+      'https://api.github.com/repos/' + OWNER + '/' + repo + '/readme'
+    )
       .then(function (r) {
         if (!r.ok) throw new Error('api');
         return r.json();
@@ -242,9 +307,18 @@
       });
   }
 
+  setStatus('Loading README…');
+
+  // Try multiple sources so blocked networks still work when possible
   loadFromRaw('master')
     .catch(function () {
       return loadFromRaw('main');
+    })
+    .catch(function () {
+      return loadFromJsDelivr('master');
+    })
+    .catch(function () {
+      return loadFromJsDelivr('main');
     })
     .catch(function () {
       return loadFromApi();
@@ -255,9 +329,13 @@
     })
     .catch(function (err) {
       console.error(err);
-      setStatus(
-        'Could not load or render the README. Open the project on GitHub instead.',
-        true
-      );
+      var ghUrl = 'https://github.com/' + OWNER + '/' + repo;
+      statusEl.hidden = false;
+      statusEl.classList.add('error');
+      statusEl.innerHTML =
+        'Could not load the README (network timeout, blocked CDN, or no README in this repo). ' +
+        '<a href="' +
+        ghUrl +
+        '" target="_blank" rel="noopener">Open on GitHub</a> instead.';
     });
 })();
