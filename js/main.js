@@ -1,6 +1,6 @@
 /**
  * Tarek Ghajary — Portfolio
- * Tabs, accordion projects, gallery carousel, theme toggle
+ * Tabs, project cards, gallery carousel, theme toggle
  */
 (function () {
   'use strict';
@@ -68,7 +68,7 @@
   var yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
-  // ---------- Projects ----------
+  // ---------- Projects (cards) ----------
   var REPO_CATEGORY = {
     Superstore_Sales_Analytics: 'analysis',
     KaggleSurveyAnalytics: 'analysis',
@@ -165,24 +165,23 @@
     var cat = REPO_CATEGORY[name] || 'other';
     var stars = repo.stargazers_count || 0;
     var lang = repo.language || '';
+    var label = (CATEGORY_LABEL && CATEGORY_LABEL[cat]) ? CATEGORY_LABEL[cat] : cat;
     return (
-      '<div class="accordion-item" data-category="' + escapeHtml(cat) + '">' +
-        '<button type="button" class="accordion-header" aria-expanded="false">' +
-          '<span class="accordion-header-left">' +
-            '<span class="accordion-chevron" aria-hidden="true">▸</span>' +
-            '<span class="card-title">' + escapeHtml(title) + '</span>' +
-          '</span>' +
-          '<span class="accordion-count">' +
-            (lang ? '<span class="badge">' + escapeHtml(lang) + '</span> ' : '') +
-            (stars ? stars + '★' : '') +
-          '</span>' +
-        '</button>' +
-        '<div class="accordion-body" hidden>' +
-          '<p class="card-desc">' + escapeHtml(desc) + '</p>' +
+      '<article class="card project-card" data-category="' + escapeHtml(cat) + '">' +
+        '<p class="card-title">' +
+          '<a href="project.html?repo=' + encodeURIComponent(name) + '">' + escapeHtml(title) + '</a>' +
+        '</p>' +
+        '<p class="card-meta">' +
+          '<span class="badge">' + escapeHtml(label) + '</span>' +
+          (lang ? '<span class="badge">' + escapeHtml(lang) + '</span>' : '') +
+          (stars ? '<span>' + stars + '★</span>' : '') +
+        '</p>' +
+        '<p class="card-desc">' + escapeHtml(desc) + '</p>' +
+        '<div class="project-card-actions">' +
           '<a class="project-link" href="project.html?repo=' + encodeURIComponent(name) + '">Open README →</a>' +
-          ' <a class="project-link" href="https://github.com/CHESyrian/' + encodeURIComponent(name) + '" target="_blank" rel="noopener">GitHub ↗</a>' +
+          '<a class="project-link" href="https://github.com/CHESyrian/' + encodeURIComponent(name) + '" target="_blank" rel="noopener">GitHub ↗</a>' +
         '</div>' +
-      '</div>'
+      '</article>'
     );
   }
 
@@ -211,31 +210,11 @@
     });
 
     var html = '';
-    var lastCat = null;
     list.forEach(function (r) {
-      var cat = REPO_CATEGORY[r.name] || 'other';
-      if (cat !== lastCat) {
-        lastCat = cat;
-        html += '<p class="panel-subtitle" style="margin:1rem 0 0.35rem">' + escapeHtml(CATEGORY_LABEL[cat] || cat) + '</p>';
-      }
       html += cardHtml(r);
     });
-
+    root.className = 'projects-grid';
     root.innerHTML = html;
-
-    root.querySelectorAll('.accordion-header').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var item = btn.closest('.accordion-item');
-        var body = item.querySelector('.accordion-body');
-        var open = btn.getAttribute('aria-expanded') === 'true';
-        btn.setAttribute('aria-expanded', open ? 'false' : 'true');
-        item.classList.toggle('open', !open);
-        if (body) {
-          if (open) body.setAttribute('hidden', '');
-          else body.removeAttribute('hidden');
-        }
-      });
-    });
   }
 
   function loadProjects() {
