@@ -1,182 +1,249 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Tarek — Data Analyst Portfolio</title>
-  <meta name="description" content="Data Analyst portfolio — IBM Data Science & Data Analyst certified. Python, SQL, Power BI, machine learning." />
-  <link rel="stylesheet" href="css/styles.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tarek Ghajary | Data Analyst</title>
+<meta name="description" content="Data Analyst portfolio — IBM Data Science & Data Analyst certified. Python, SQL, Power BI, machine learning." />
+<link rel="stylesheet" href="css/styles.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
+<a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="topbar">
-    <div class="container topbar-inner">
-      <a class="brand" href="#">CHE<span>Syrian</span></a>
-      <nav class="tabs" role="tablist" aria-label="Sections">
-        <button type="button" class="tab active" data-tab="about" role="tab" aria-selected="true">About</button>
-        <button type="button" class="tab" data-tab="education" role="tab" aria-selected="false">Education</button>
-        <button type="button" class="tab" data-tab="certificates" role="tab" aria-selected="false">Certificates</button>
-        <button type="button" class="tab" data-tab="skills" role="tab" aria-selected="false">Skills</button>
-        <button type="button" class="tab" data-tab="projects" role="tab" aria-selected="false">Projects</button>
-        <button type="button" class="tab" data-tab="gallery" role="tab" aria-selected="false">Gallery</button>
-        <button type="button" class="tab" data-tab="contact" role="tab" aria-selected="false">Contact</button>
-      </nav>
+<header class="profile-header">
+  <div class="cover" role="img" aria-label="Cover background"></div>
+  <div class="container profile-body">
+    <div class="profile-row">
+      <div class="avatar-wrap">
+        <img class="avatar" id="profile-photo" src="assets/Ptofile-imsge.png" alt="Tarek Ghajary" width="152" height="152" />
+        <span class="avatar-status" title="Available"></span>
+      </div>
+      <div class="profile-info">
+        <span class="eyebrow">Open to opportunities</span>
+        <h1>Tarek Ghajary</h1>
+        <p class="profile-role">Data Analyst · Economics · Data Science</p>
+        <div class="profile-meta">
+          <span>📍 Tartous – Drekish, Syria</span>
+          <span>🎂 05 Jan 1995</span>
+          <span>✓ Military service: Free</span>
+        </div>
+        <div class="profile-actions">
+          <a class="btn btn-primary" href="https://github.com/CHESyrian" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn btn-ghost" href="mailto:tarek940gh@gmail.com">Email</a>
+          <a class="btn btn-ghost" href="https://www.kaggle.com/tarekghajary" target="_blank" rel="noopener">Kaggle</a>
+        </div>
+        <div class="social-bar">
+          <a class="social-btn" href="https://github.com/CHESyrian" target="_blank" rel="noopener" title="GitHub">GitHub</a>
+          <a class="social-btn" href="https://www.kaggle.com/tarekghajary" target="_blank" rel="noopener" title="Kaggle">Kaggle</a>
+          <a class="social-btn" href="mailto:tarek940gh@gmail.com" title="Email">Email</a>
+        </div>
+      </div>
       <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle theme" title="Toggle theme">◐</button>
     </div>
-  </header>
+  </div>
+</header>
 
-  <main id="main" class="container">
+<nav class="tabs-wrap" aria-label="Sections">
+  <div class="container">
+    <div class="tabs" role="tablist">
+      <button type="button" class="tab-btn active" data-tab="about" role="tab" aria-selected="true">About</button>
+      <button type="button" class="tab-btn" data-tab="education" role="tab" aria-selected="false">Education</button>
+      <button type="button" class="tab-btn" data-tab="certificates" role="tab" aria-selected="false">Certificates</button>
+      <button type="button" class="tab-btn" data-tab="skills" role="tab" aria-selected="false">Skills</button>
+      <button type="button" class="tab-btn" data-tab="projects" role="tab" aria-selected="false">Projects</button>
+      <button type="button" class="tab-btn" data-tab="gallery" role="tab" aria-selected="false">Gallery</button>
+      <button type="button" class="tab-btn" data-tab="contact" role="tab" aria-selected="false">Contact</button>
+    </div>
+  </div>
+</nav>
 
-    <div id="panel-about" class="tab-panel active" role="tabpanel">
-      <div class="about-block">
-        <img class="avatar" src="assets/Ptofile-imsge.png" alt="Tarek" width="128" height="128" loading="eager" />
-        <div>
-          <p class="eyebrow">Data Analyst · Tartous–Drekish</p>
-          <h1>Hi, I'm <span class="accent">Tarek</span></h1>
-          <p>I turn data into decisions. IBM-certified in Data Science & Data Analysis, focused on Python, SQL, Power BI, and applied machine learning.</p>
-          <div class="social-bar">
-            <a href="https://github.com/CHESyrian" target="_blank" rel="noopener">GitHub</a>
-            <a href="https://www.linkedin.com/in/tarek-gh" target="_blank" rel="noopener">LinkedIn</a>
-            <a href="https://www.kaggle.com/chesyrian" target="_blank" rel="noopener">Kaggle</a>
-            <a href="mailto:tarek940gh@gmail.com">Email</a>
-          </div>
-        </div>
+<main id="main" class="container tab-panels">
+
+  <div id="panel-about" class="tab-panel active" role="tabpanel">
+    <h2 class="panel-title">About me</h2>
+    <p class="panel-subtitle">Background and focus</p>
+    <div class="about-text">
+      <p>Bachelor's degree holder in Economics with a specialization in Financial and Banking Sciences, with expertise in data analysis, statistical methods, and database management. Skilled in collecting, organizing, cleaning, and analyzing data to produce reliable statistical indicators and analytical reports that support evidence-based decision-making and institutional planning.</p>
+      <p>Proficient in Python, SQL, and data analysis tools, with strong analytical thinking, attention to detail, and a commitment to accuracy, integrity, and continuous improvement. Seeking to contribute analytical and statistical expertise to enhance organizational performance and support data-driven public and private sector work.</p>
+    </div>
+  </div>
+
+  <div id="panel-education" class="tab-panel" role="tabpanel">
+    <h2 class="panel-title">Education</h2>
+    <p class="panel-subtitle">Academic background</p>
+    <div class="stack">
+      <div class="card">
+        <p class="card-title">University of Tartous — Faculty of Economy</p>
+        <p class="card-meta"><span class="badge">Bachelor</span> Banking and Finance · 2012 – 2020</p>
+      </div>
+      <div class="card">
+        <p class="card-title">IBM Data Science Professional Certificate</p>
+        <p class="card-meta"><span class="badge badge-green">2025</span> Coursera · 10 courses · Capstone</p>
+      </div>
+      <div class="card">
+        <p class="card-title">IBM Data Analyst Professional Certificate</p>
+        <p class="card-meta"><span class="badge badge-green">2025</span> Coursera · 9 courses</p>
       </div>
     </div>
+  </div>
 
-    <div id="panel-education" class="tab-panel" role="tabpanel">
-      <h2 class="panel-title">Education</h2>
-      <div class="stack">
-        <div class="card">
-          <p class="card-title">Data Science & Data Analysis</p>
-          <p class="card-meta"><span class="badge badge-green">2025</span> IBM · Coursera Professional Certificates</p>
-        </div>
+  <div id="panel-certificates" class="tab-panel" role="tabpanel">
+    <h2 class="panel-title">Certificates</h2>
+    <p class="panel-subtitle">Professional credentials · click Verify to confirm on Coursera</p>
+    <div class="stack">
+      <div class="card">
+        <p class="card-title">IBM Data Science Professional Certificate</p>
+        <p class="card-meta"><span class="badge badge-green">2025</span> Coursera · 10 courses · Capstone</p>
+        <a class="cert-img-link" href="assets/IBM-DataScience.png" target="_blank" rel="noopener"><img class="cert-img" src="assets/IBM-DataScience.png" alt="IBM Data Science" loading="lazy" /></a>
+      </div>
+      <div class="card">
+        <p class="card-title">IBM Data Analyst Professional Certificate</p>
+        <p class="card-meta"><span class="badge badge-green">2025</span> Coursera · 9 courses</p>
+        <a class="cert-img-link" href="assets/IBM-DataAnalyst.png" target="_blank" rel="noopener"><img class="cert-img" src="assets/IBM-DataAnalyst.png" alt="IBM Data Analyst" loading="lazy" /></a>
+      </div>
+      <div class="card">
+        <p class="card-title">Foundations of Data Analysis with Pandas and Python</p>
+        <p class="card-meta"><span class="badge badge-green">2025</span> Packt · Coursera</p>
+        <a class="cert-img-link" href="assets/cert-pandas-foundations.jpg" target="_blank" rel="noopener"><img class="cert-img" src="assets/cert-pandas-foundations.jpg" alt="Foundations of Data Analysis" loading="lazy" /></a>
+        <a class="project-link" href="https://coursera.org/verify/BB1X6CXSHOB5" target="_blank" rel="noopener">Verify certificate →</a>
+      </div>
+      <div class="card">
+        <p class="card-title">Power BI for Beginners: Interactive Dashboard Fundamentals</p>
+        <p class="card-meta"><span class="badge badge-green">2025</span> Coursera Project</p>
+        <a class="cert-img-link" href="assets/cert-powerbi.jpg" target="_blank" rel="noopener"><img class="cert-img" src="assets/cert-powerbi.jpg" alt="Power BI for Beginners" loading="lazy" /></a>
+        <a class="project-link" href="https://coursera.org/verify/RCALDVIKCGL" target="_blank" rel="noopener">Verify certificate →</a>
+      </div>
+      <div class="card">
+        <p class="card-title">A Crash Course in Data Science</p>
+        <p class="card-meta"><span class="badge">2020</span> Johns Hopkins University · Coursera</p>
+        <a class="cert-img-link" href="assets/cert-jhu-crash-ds.jpg" target="_blank" rel="noopener"><img class="cert-img" src="assets/cert-jhu-crash-ds.jpg" alt="A Crash Course in Data Science" loading="lazy" /></a>
+        <a class="project-link" href="https://coursera.org/verify/ZQDVUX7BH9N5" target="_blank" rel="noopener">Verify certificate →</a>
+      </div>
+      <div class="card">
+        <p class="card-title">Python and Statistics for Financial Analysis</p>
+        <p class="card-meta"><span class="badge">2020</span> HKUST · Coursera</p>
+        <a class="cert-img-link" href="assets/cert-python-stats-finance.jpg" target="_blank" rel="noopener"><img class="cert-img" src="assets/cert-python-stats-finance.jpg" alt="Python and Statistics for Financial Analysis" loading="lazy" /></a>
+        <a class="project-link" href="https://coursera.org/verify/AXKEAAB24XB8" target="_blank" rel="noopener">Verify certificate →</a>
+      </div>
+      <div class="card">
+        <p class="card-title">Responsive Website Basics: Code with HTML, CSS, and JavaScript</p>
+        <p class="card-meta"><span class="badge">2020</span> University of London · Coursera</p>
+        <a class="cert-img-link" href="assets/cert-responsive-web.jpg" target="_blank" rel="noopener"><img class="cert-img" src="assets/cert-responsive-web.jpg" alt="Responsive Website Basics" loading="lazy" /></a>
+        <a class="project-link" href="https://coursera.org/verify/YSQR4V7MBQL" target="_blank" rel="noopener">Verify certificate →</a>
+      </div>
+      <div class="card">
+        <p class="card-title">Clustering Geolocation Data Intelligently in Python</p>
+        <p class="card-meta"><span class="badge">2020</span> Coursera Guided Project</p>
+        <a class="cert-img-link" href="assets/cert-cluster-geo.jpg" target="_blank" rel="noopener"><img class="cert-img" src="assets/cert-cluster-geo.jpg" alt="Clustering Geolocation Data" loading="lazy" /></a>
+        <a class="project-link" href="https://coursera.org/verify/RWJBAFLH8AM5" target="_blank" rel="noopener">Verify certificate →</a>
+      </div>
+      <div class="card">
+        <p class="card-title">Computer Vision — Object Detection with OpenCV and Python</p>
+        <p class="card-meta"><span class="badge">2020</span> Coursera Guided Project</p>
+        <a class="cert-img-link" href="assets/cert-cv-opencv.jpg" target="_blank" rel="noopener"><img class="cert-img" src="assets/cert-cv-opencv.jpg" alt="Computer Vision Object Detection" loading="lazy" /></a>
+        <a class="project-link" href="https://coursera.org/verify/CM3FM3XMRQZA" target="_blank" rel="noopener">Verify certificate →</a>
       </div>
     </div>
+  </div>
 
-    <div id="panel-certificates" class="tab-panel" role="tabpanel">
-      <h2 class="panel-title">Certificates</h2>
-      <p class="panel-subtitle">Professional credentials · click Verify to confirm on Coursera</p>
-      <div class="stack">
-        <div class="card">
-          <p class="card-title">IBM Data Science Professional Certificate</p>
-          <p class="card-meta"><span class="badge badge-green">2025</span> Coursera · 10 courses · Capstone</p>
-          <a class="cert-img-link" href="assets/IBM-DataScience.png" target="_blank" rel="noopener"><img class="cert-img" src="assets/IBM-DataScience.png" alt="IBM Data Science" loading="lazy" /></a>
-        </div>
-        <div class="card">
-          <p class="card-title">IBM Data Analyst Professional Certificate</p>
-          <p class="card-meta"><span class="badge badge-green">2025</span> Coursera · 9 courses</p>
-          <a class="cert-img-link" href="assets/IBM-DataAnalyst.png" target="_blank" rel="noopener"><img class="cert-img" src="assets/IBM-DataAnalyst.png" alt="IBM Data Analyst" loading="lazy" /></a>
-        </div>
-        <div class="card">
-          <p class="card-title">Foundations of Data Analysis with Pandas and Python</p>
-          <p class="card-meta"><span class="badge badge-green">2025</span> Packt · Coursera</p>
-          <a class="cert-img-link" href="assets/cert-pandas-foundations.jpg" target="_blank" rel="noopener"><img class="cert-img" src="assets/cert-pandas-foundations.jpg" alt="Foundations of Data Analysis" loading="lazy" /></a>
-          <a class="project-link" href="https://coursera.org/verify/BB1X6CXSHOB5" target="_blank" rel="noopener">Verify certificate →</a>
-        </div>
-        <div class="card">
-          <p class="card-title">Power BI for Beginners: Interactive Dashboard Fundamentals</p>
-          <p class="card-meta"><span class="badge badge-green">2025</span> Coursera Project</p>
-          <a class="cert-img-link" href="assets/cert-powerbi.jpg" target="_blank" rel="noopener"><img class="cert-img" src="assets/cert-powerbi.jpg" alt="Power BI for Beginners" loading="lazy" /></a>
-          <a class="project-link" href="https://coursera.org/verify/RCALDVIKCGL" target="_blank" rel="noopener">Verify certificate →</a>
-        </div>
-        <div class="card">
-          <p class="card-title">A Crash Course in Data Science</p>
-          <p class="card-meta"><span class="badge">2020</span> Johns Hopkins University · Coursera</p>
-          <a class="cert-img-link" href="assets/cert-jhu-crash-ds.jpg" target="_blank" rel="noopener"><img class="cert-img" src="assets/cert-jhu-crash-ds.jpg" alt="A Crash Course in Data Science" loading="lazy" /></a>
-          <a class="project-link" href="https://coursera.org/verify/ZQDVUX7BH9N5" target="_blank" rel="noopener">Verify certificate →</a>
-        </div>
-        <div class="card">
-          <p class="card-title">Python and Statistics for Financial Analysis</p>
-          <p class="card-meta"><span class="badge">2020</span> HKUST · Coursera</p>
-          <a class="cert-img-link" href="assets/cert-python-stats-finance.jpg" target="_blank" rel="noopener"><img class="cert-img" src="assets/cert-python-stats-finance.jpg" alt="Python and Statistics for Financial Analysis" loading="lazy" /></a>
-          <a class="project-link" href="https://coursera.org/verify/AXKEAAB24XB8" target="_blank" rel="noopener">Verify certificate →</a>
-        </div>
-        <div class="card">
-          <p class="card-title">Responsive Website Basics: Code with HTML, CSS, and JavaScript</p>
-          <p class="card-meta"><span class="badge">2020</span> University of London · Coursera</p>
-          <a class="cert-img-link" href="assets/cert-responsive-web.jpg" target="_blank" rel="noopener"><img class="cert-img" src="assets/cert-responsive-web.jpg" alt="Responsive Website Basics" loading="lazy" /></a>
-          <a class="project-link" href="https://coursera.org/verify/YSQR4V7MBQL" target="_blank" rel="noopener">Verify certificate →</a>
-        </div>
-        <div class="card">
-          <p class="card-title">Clustering Geolocation Data Intelligently in Python</p>
-          <p class="card-meta"><span class="badge">2020</span> Coursera Guided Project</p>
-          <a class="cert-img-link" href="assets/cert-cluster-geo.jpg" target="_blank" rel="noopener"><img class="cert-img" src="assets/cert-cluster-geo.jpg" alt="Clustering Geolocation Data" loading="lazy" /></a>
-          <a class="project-link" href="https://coursera.org/verify/RWJBAFLH8AM5" target="_blank" rel="noopener">Verify certificate →</a>
-        </div>
-        <div class="card">
-          <p class="card-title">Computer Vision — Object Detection with OpenCV and Python</p>
-          <p class="card-meta"><span class="badge">2020</span> Coursera Guided Project</p>
-          <a class="cert-img-link" href="assets/cert-cv-opencv.jpg" target="_blank" rel="noopener"><img class="cert-img" src="assets/cert-cv-opencv.jpg" alt="Computer Vision Object Detection" loading="lazy" /></a>
-          <a class="project-link" href="https://coursera.org/verify/CM3FM3XMRQZA" target="_blank" rel="noopener">Verify certificate →</a>
-        </div>
+  <div id="panel-skills" class="tab-panel" role="tabpanel">
+    <h2 class="panel-title">Skills</h2>
+    <p class="panel-subtitle">Tools and techniques I use day to day</p>
+    <div class="skills-grid">
+      <div class="card">
+        <h3 class="card-title">Data analysis</h3>
+        <ul class="skill-list">
+          <li>Python (Pandas, NumPy)</li>
+          <li>SQL &amp; relational modeling</li>
+          <li>Exploratory data analysis</li>
+          <li>Feature engineering</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 class="card-title">Visualization</h3>
+        <ul class="skill-list">
+          <li>Power BI dashboards</li>
+          <li>Matplotlib / Seaborn</li>
+          <li>Interactive charts</li>
+          <li>Storytelling with data</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 class="card-title">Machine learning</h3>
+        <ul class="skill-list">
+          <li>scikit-learn pipelines</li>
+          <li>Clustering &amp; classification</li>
+          <li>OpenCV / computer vision</li>
+          <li>Model evaluation</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 class="card-title">Engineering</h3>
+        <ul class="skill-list">
+          <li>Git &amp; GitHub</li>
+          <li>Jupyter / notebooks</li>
+          <li>HTML, CSS, JavaScript</li>
+          <li>Reproducible workflows</li>
+        </ul>
       </div>
     </div>
+  </div>
 
-    <div id="panel-skills" class="tab-panel" role="tabpanel">
-      <h2 class="panel-title">Skills</h2>
-      <p class="panel-subtitle">Tools and techniques I use day to day</p>
-      <div class="skills-grid">
-        <div class="card"><h3 class="card-title">Data analysis</h3><ul class="skill-list"><li>Python (Pandas, NumPy)</li><li>SQL & relational modeling</li><li>Exploratory data analysis</li><li>Feature engineering</li></ul></div>
-        <div class="card"><h3 class="card-title">Visualization</h3><ul class="skill-list"><li>Power BI dashboards</li><li>Matplotlib / Seaborn</li><li>Interactive charts</li><li>Storytelling with data</li></ul></div>
-        <div class="card"><h3 class="card-title">Machine learning</h3><ul class="skill-list"><li>scikit-learn pipelines</li><li>Clustering & classification</li><li>OpenCV / computer vision</li><li>Model evaluation</li></ul></div>
-        <div class="card"><h3 class="card-title">Engineering</h3><ul class="skill-list"><li>Git & GitHub</li><li>Jupyter / notebooks</li><li>HTML, CSS, JavaScript</li><li>Reproducible workflows</li></ul></div>
-      </div>
+  <div id="panel-projects" class="tab-panel" role="tabpanel">
+    <h2 class="panel-title">Projects</h2>
+    <p class="panel-subtitle">Public repositories on <a href="https://github.com/CHESyrian" target="_blank" rel="noopener">GitHub</a> — auto-synced · click a name to read its README</p>
+    <div id="projects-root" class="accordion">
+      <p id="projects-loading" class="readme-status" style="margin:1rem 0">Loading projects…</p>
     </div>
+  </div>
 
-    <div id="panel-projects" class="tab-panel" role="tabpanel">
-      <h2 class="panel-title">Projects</h2>
-      <p class="panel-subtitle">Public repositories on <a href="https://github.com/CHESyrian" target="_blank" rel="noopener">GitHub</a> — auto-synced · click a name to read its README</p>
-      <div id="projects-root" class="accordion">
-        <p id="projects-loading" class="readme-status" style="margin:1rem 0">Loading projects…</p>
+  <div id="panel-gallery" class="tab-panel" role="tabpanel">
+    <div class="gallery-head">
+      <div>
+        <h2 class="panel-title">Gallery</h2>
+        <p class="panel-subtitle" style="margin-bottom:0">Project visuals — arrows, dots, or swipe</p>
       </div>
+      <div class="carousel-counter" id="carousel-counter">1 / 6</div>
     </div>
-
-    <div id="panel-gallery" class="tab-panel" role="tabpanel">
-      <h2 class="panel-title">Gallery</h2>
-      <p class="panel-subtitle">Screenshots and visual work</p>
-      <div class="carousel" role="region" aria-roledescription="carousel" aria-label="Project gallery">
-        <div class="carousel-viewport">
-          <div class="carousel-track">
-            <div class="carousel-slide" data-index="0"><img src="assets/p1_top.png" alt="Screenshot 1" loading="lazy" /></div>
-            <div class="carousel-slide" data-index="1"><img src="assets/p3_top.png" alt="Screenshot 2" loading="lazy" /></div>
-            <div class="carousel-slide" data-index="2"><img src="assets/p3_bot.png" alt="Screenshot 3" loading="lazy" /></div>
-          </div>
+    <div class="carousel" tabindex="0" aria-label="Project image gallery">
+      <button type="button" class="carousel-btn carousel-prev" aria-label="Previous image">‹</button>
+      <button type="button" class="carousel-btn carousel-next" aria-label="Next image">›</button>
+      <div class="carousel-viewport">
+        <div class="carousel-track">
+          <div class="carousel-slide"><a class="carousel-media" href="project.html?repo=Superstore_Sales_Analytics"><img src="https://raw.githubusercontent.com/CHESyrian/Superstore_Sales_Analytics/master/assets/images/phase1_report.png" alt="Superstore Phase 1" loading="lazy" /><span class="carousel-tag">Data Analysis</span><span class="carousel-overlay"><span class="carousel-title">Superstore · Phase 1</span><span class="carousel-open">Open project →</span></span></a></div>
+          <div class="carousel-slide"><a class="carousel-media" href="project.html?repo=Superstore_Sales_Analytics"><img src="https://raw.githubusercontent.com/CHESyrian/Superstore_Sales_Analytics/master/assets/images/phase5_executive_summary.png" alt="Executive summary" loading="lazy" /><span class="carousel-tag">Data Analysis</span><span class="carousel-overlay"><span class="carousel-title">Superstore · Executive summary</span><span class="carousel-open">Open project →</span></span></a></div>
+          <div class="carousel-slide"><a class="carousel-media" href="project.html?repo=PROPERTICA"><img src="https://raw.githubusercontent.com/CHESyrian/PROPERTICA/master/static/img/propertica-brand-h.png" alt="PROPERTICA" loading="lazy" /><span class="carousel-tag">Web</span><span class="carousel-overlay"><span class="carousel-title">PROPERTICA</span><span class="carousel-open">Open project →</span></span></a></div>
+          <div class="carousel-slide"><a class="carousel-media" href="project.html?repo=SURVERA"><img src="https://raw.githubusercontent.com/CHESyrian/SURVERA/master/static/images/survera-brand.png" alt="SURVERA" loading="lazy" /><span class="carousel-tag">Web</span><span class="carousel-overlay"><span class="carousel-title">SURVERA</span><span class="carousel-open">Open project →</span></span></a></div>
+          <div class="carousel-slide"><a class="carousel-media" href="project.html?repo=STORICA"><img src="https://raw.githubusercontent.com/CHESyrian/STORICA/master/frontend/resources/images/storica_main.png" alt="STORICA" loading="lazy" /><span class="carousel-tag">Web</span><span class="carousel-overlay"><span class="carousel-title">STORICA</span><span class="carousel-open">Open project →</span></span></a></div>
+          <div class="carousel-slide"><a class="carousel-media" href="project.html?repo=CHEMDReader"><img src="https://raw.githubusercontent.com/CHESyrian/CHEMDReader/master/static/brand-icon.png" alt="CHEMD Reader" loading="lazy" /><span class="carousel-tag">Tools</span><span class="carousel-overlay"><span class="carousel-title">CHEMD Reader</span><span class="carousel-open">Open project →</span></span></a></div>
         </div>
-        <div class="carousel-controls">
-          <button type="button" class="carousel-btn prev" aria-label="Previous">‹</button>
-          <span class="carousel-counter" aria-live="polite">1 / 3</span>
-          <button type="button" class="carousel-btn next" aria-label="Next">›</button>
-        </div>
-        <div class="carousel-dots" role="tablist" aria-label="Gallery slides"></div>
       </div>
+      <div class="carousel-dots" role="tablist" aria-label="Gallery slides"></div>
     </div>
+  </div>
 
-    <div id="panel-contact" class="tab-panel" role="tabpanel">
-      <h2 class="panel-title">Contact</h2>
-      <p class="panel-subtitle">Open to data analysis roles and collaborations</p>
-      <div class="contact-grid">
-        <a class="contact-card" href="mailto:tarek940gh@gmail.com"><span class="contact-label">Email</span><span class="contact-value">tarek940gh@gmail.com</span></a>
-        <a class="contact-card" href="https://github.com/CHESyrian" target="_blank" rel="noopener"><span class="contact-label">GitHub</span><span class="contact-value">@CHESyrian</span></a>
-        <a class="contact-card" href="https://www.linkedin.com/in/tarek-gh" target="_blank" rel="noopener"><span class="contact-label">LinkedIn</span><span class="contact-value">Tarek</span></a>
-        <a class="contact-card" href="https://www.kaggle.com/chesyrian" target="_blank" rel="noopener"><span class="contact-label">Kaggle</span><span class="contact-value">@chesyrian</span></a>
-      </div>
+  <div id="panel-contact" class="tab-panel" role="tabpanel">
+    <h2 class="panel-title">Contact</h2>
+    <p class="panel-subtitle">Open to data analysis roles and collaborations</p>
+    <div class="contact-icons">
+      <a class="contact-icon-btn" href="mailto:tarek940gh@gmail.com" title="Email">✉ Email<br><span>tarek940gh@gmail.com</span></a>
+      <a class="contact-icon-btn" href="https://github.com/CHESyrian" target="_blank" rel="noopener" title="GitHub">⌘ GitHub<br><span>@CHESyrian</span></a>
+      <a class="contact-icon-btn" href="https://www.kaggle.com/tarekghajary" target="_blank" rel="noopener" title="Kaggle">📊 Kaggle<br><span>@tarekghajary</span></a>
     </div>
+    <p class="contact-hint">Prefer email for opportunities. GitHub for code and collaboration.</p>
+  </div>
 
-  </main>
+</main>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p>© <span id="year"></span> Tarek · Built with GitHub Pages</p>
-      <p class="muted">Tartous–Drekish</p>
-    </div>
-  </footer>
+<footer>
+  <div class="container">
+    <p>© <span id="year">2026</span> Tarek Ghajary · Data Analyst · Built with HTML / CSS / JS · GitHub Pages</p>
+  </div>
+</footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <script src="js/main.js?v=20261028h"></script>
+<script src="js/main.js?v=20261028i"></script>
 </body>
 </html>
